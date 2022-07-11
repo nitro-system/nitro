@@ -13,8 +13,19 @@
         "polyfills": "apps/m-admin/src/polyfills.ts",
         "tsConfig": "apps/m-admin/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/m-admin/src/favicon.ico", "apps/m-admin/src/assets"],
-        "styles": ["apps/m-admin/src/styles.scss"],
+        "assets": [
+          "apps/m-admin/src/favicon.ico",
+          "apps/m-admin/src/assets",
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          }
+        ],
+        "styles": [
+          "apps/m-admin/src/theme/variables.scss",
+          "apps/m-admin/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
