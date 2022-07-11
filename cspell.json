@@ -1,7 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
-  "words": ["ngcc", "tailwindcss", "nrwl", "nestjs", "devkit", "cacheable"],
+  "words": [
+    "cacheable",
+    "commitlint",
+    "devkit",
+    "Elsayed",
+    "nestjs",
+    "ngcc",
+    "nrwl",
+    "tailwindcss"
+  ],
   "language": "en",
   "ignoreRegExpList": ["/[ء-ي]+/"],
   "files": ["**"],
