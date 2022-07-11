@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
@@ -8,7 +9,12 @@ import { HomePage } from './home.page';
 describe('HomePage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, IonicModule, RouterTestingModule],
+      imports: [
+        CommonModule,
+        IonicModule,
+        RouterTestingModule,
+        HttpClientModule,
+      ],
       declarations: [HomePage],
     }).compileComponents();
   });
