@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "m-admin": {
+      "name": "m-admin",
+      "integrations": {},
+      "type": "angular",
+      "root": ""
+    }
+  },
+  "defaultProject": "m-admin"
+}

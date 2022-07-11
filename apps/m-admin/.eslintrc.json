@@ -9,21 +9,17 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          { "suffixes": ["Page", "Component"] }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
-          {
-            "type": "attribute",
-            "prefix": "mAdmin",
-            "style": "camelCase"
-          }
+          { "type": "attribute", "prefix": "mAdmin", "style": "camelCase" }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          {
-            "type": "element",
-            "prefix": "m-admin",
-            "style": "kebab-case"
-          }
+          { "type": "element", "prefix": "m-admin", "style": "kebab-case" }
         ]
       }
     },
