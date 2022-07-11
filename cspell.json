@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "words": ["ngcc", "tailwindcss", "nrwl", "nestjs", "devkit", "cacheable"],
+  "language": "en",
+  "ignoreRegExpList": ["/[ء-ي]+/"],
+  "files": ["**"],
+  "enableGlobDot": true,
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    ".git",
+    ".angular",
+    ".gitignore",
+    ".husky/_/**",
+    ".eslintrc.json",
+    "**/*.svg",
+    "decorate-angular-cli.js",
+    ".browserslistrc",
+    "cspell.json",
+    ".vscode"
+  ]
+}

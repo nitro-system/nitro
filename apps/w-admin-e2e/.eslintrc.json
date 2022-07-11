@@ -13,5 +13,8 @@
         "no-undef": "off"
       }
     }
-  ]
+  ],
+  "rules": {
+    "no-console": "off"
+  }
 }

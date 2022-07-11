@@ -1,4 +1,5 @@
-/* eslint-disable */
+// cspell:ignore serializers
+
 export default {
   displayName: 'w-admin',
   preset: '../../jest.preset.js',

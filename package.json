@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "cspell": "cspell"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +37,6 @@
     "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "~14.0.0",
     "@angular/language-service": "~14.0.0",
-    "@js-omar/eslint-config": "^1.8.1",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
     "@nrwl/cli": "14.4.2",
@@ -51,6 +51,7 @@
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
+    "cspell": "^6.2.3",
     "cypress": "^9.1.0",
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
