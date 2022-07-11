@@ -8,6 +8,7 @@ import { Message } from '@nitro/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  public hello$ = this.http.get<Message>('/api/hello');
+
+  public constructor(private http: HttpClient) {}
 }

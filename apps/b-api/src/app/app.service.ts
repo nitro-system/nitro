@@ -3,7 +3,9 @@ import { Message } from '@nitro/api-interfaces';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: 'Welcome to api!' };
+  private message = 'Welcome to api!';
+
+  public getData(): Message {
+    return { message: this.message };
   }
 }
