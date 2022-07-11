@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/w-admin/src",
-  "prefix": "nitro",
+  "prefix": "w-admin",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -87,5 +87,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["web"]
 }

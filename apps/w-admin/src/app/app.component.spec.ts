@@ -2,12 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, NxWelcomeComponent],
+      declarations: [AppComponent],
       imports: [HttpClientModule, RouterTestingModule],
     }).compileComponents();
   });
@@ -28,6 +27,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello World!');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Welcome To Our Admin Web!'
+    );
   });
 });
