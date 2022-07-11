@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('w-admin', () => {
+describe('m-admin', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {

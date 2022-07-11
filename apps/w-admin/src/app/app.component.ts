@@ -10,5 +10,7 @@ import { Message } from '@nitro/api-interfaces';
 export class AppComponent {
   public hello$ = this.http.get<Message>('/api/hello');
 
+  public title = 'w-admin';
+
   public constructor(private http: HttpClient) {}
 }

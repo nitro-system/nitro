@@ -2,8 +2,10 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "b-api": "apps/b-api",
     "api-interfaces": "libs/api-interfaces",
+    "b-api": "apps/b-api",
+    "m-admin": "apps/m-admin",
+    "m-admin-e2e": "apps/m-admin-e2e",
     "w-admin": "apps/w-admin",
     "w-admin-e2e": "apps/w-admin-e2e"
   }
