@@ -1,7 +1,15 @@
 {
-  "name": "nitro",
+  "name": "nitro-system",
+  "displayName": "Nitro System",
+  "description": "Nitro System Project",
   "version": "0.0.0",
-  "license": "MIT",
+  "homepage": "https://github.com/nitro-system/nitro#readme",
+  "keywords": [
+    "nitro",
+    "angular",
+    "nestjs",
+    "ionic"
+  ],
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
@@ -83,5 +91,25 @@
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
     "typescript": "~4.7.2"
-  }
+  },
+  "author": {
+    "name": "Omar Elsayed",
+    "email": "challengeromar97@gmail.com",
+    "url": "https://ng-omar.com"
+  },
+  "engines": {
+    "node": "16.10.0",
+    "npm": ">=8"
+  },
+  "funding": [
+    "https://ng-omar.com/donate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitro-system/nitro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nitro-system/nitro/issues"
+  },
+  "license": "UNLICENSE"
 }
