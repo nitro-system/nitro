@@ -26,7 +26,6 @@
     "preserveConstEnums": true,
     "baseUrl": ".",
     "paths": {
-      "@nitro/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@nitro/shared/dtos": ["libs/shared/dtos/src/index.ts"],
       "@nitro/shared/enums": ["libs/shared/enums/src/index.ts"],
       "@nitro/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
