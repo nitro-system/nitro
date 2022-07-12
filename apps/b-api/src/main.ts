@@ -3,20 +3,31 @@
  * This is only a minimal backend to get started.
  */
 
-import { Logger } from '@nestjs/common';
+import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
+
+  app.enableCors({ origin: '*' });
+
+  app.setGlobalPrefix('api');
+
+  app.enableVersioning({ type: VersioningType.URI });
+
+  const port = process.env.APP_PORT || 3000;
+
+  // eslint-disable-next-line no-console
+  console.log(`APP_ENV:  ${process.env.APP_ENV}`);
+
+  // eslint-disable-next-line no-console
+  console.log(`APP_PORT: ${port}`);
+
   await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
+
+  Logger.log(`🚀 Application is running on: http://localhost:${port}`);
 }
 
 bootstrap();
