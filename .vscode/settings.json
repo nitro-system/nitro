@@ -11,6 +11,7 @@
     "tailwind",
     "m-admin",
     "github",
-    "libs"
+    "libs",
+    "b-api"
   ]
 }

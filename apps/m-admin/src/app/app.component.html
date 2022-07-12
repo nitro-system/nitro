@@ -7,11 +7,19 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerDirection="root" [routerLink]="['', 'home']" lines="none" detail="false">
+            <ion-icon slot="start" icon="home-outline"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerDirection="root" [routerLink]="['', 'services']" lines="none" detail="false">
+            <ion-icon slot="start" icon="cube-outline"></ion-icon>
+            <ion-label>Services</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

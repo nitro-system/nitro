@@ -1,15 +1,24 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Message } from '@nitro/api-interfaces';
+import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'm-admin-home',
   templateUrl: './home.page.html',
 })
-export class HomePage {
-  public hello$ = this.http.get<Message>('/api/hello');
-
+export class HomePage implements OnInit {
   public title = 'Admin App';
 
-  public constructor(private http: HttpClient) {}
+  public welcomeMessage = 'Loading...';
+
+  public constructor(private readonly homeService: HomeService) {}
+
+  public ngOnInit(): void {
+    this.getWelcomeMessage();
+  }
+
+  private getWelcomeMessage(): void {
+    this.homeService.getWelcomeMessage(this.title).subscribe((message) => {
+      this.welcomeMessage = message;
+    });
+  }
 }
