@@ -2,7 +2,9 @@
   "projects": {
     "m-admin": {
       "name": "m-admin",
-      "integrations": {},
+      "integrations": {
+        "capacitor": {}
+      },
       "type": "angular",
       "root": ""
     }

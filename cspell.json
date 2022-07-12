@@ -6,6 +6,7 @@
     "commitlint",
     "devkit",
     "Elsayed",
+    "haptics",
     "ionicons",
     "nestjs",
     "ngcc",
@@ -29,6 +30,8 @@
     ".browserslistrc",
     "cspell.json",
     ".vscode",
-    "jest.config.ts"
+    "jest.config.ts",
+    "android",
+    "ios"
   ]
 }
