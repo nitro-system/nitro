@@ -6,6 +6,10 @@
     "b-api": "apps/b-api",
     "m-admin": "apps/m-admin",
     "m-admin-e2e": "apps/m-admin-e2e",
+    "shared-dtos": "libs/shared/dtos",
+    "shared-enums": "libs/shared/enums",
+    "shared-interfaces": "libs/shared/interfaces",
+    "shared-utils": "libs/shared/utils",
     "w-admin": "apps/w-admin",
     "w-admin-e2e": "apps/w-admin-e2e"
   }

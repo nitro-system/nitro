@@ -35,7 +35,8 @@
         "no-plusplus": "off",
         "no-continue": "off",
         "no-await-in-loop": "off",
-        "no-useless-constructor": "off"
+        "no-useless-constructor": "off",
+        "no-return-assign": "off"
       }
     },
     {

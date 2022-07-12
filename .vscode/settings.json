@@ -6,5 +6,11 @@
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
   },
-  "conventionalCommits.scopes": ["lint", "tailwind", "m-admin", "github"]
+  "conventionalCommits.scopes": [
+    "lint",
+    "tailwind",
+    "m-admin",
+    "github",
+    "libs"
+  ]
 }
