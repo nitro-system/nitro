@@ -5,7 +5,6 @@ import { Message } from '@nitro/api-interfaces';
 @Component({
   selector: 'w-admin-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   public hello$ = this.http.get<Message>('/api/hello');

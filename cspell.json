@@ -11,6 +11,8 @@
     "nestjs",
     "ngcc",
     "nrwl",
+    "sonarjs",
+    "stylelint",
     "tailwindcss"
   ],
   "language": "en",

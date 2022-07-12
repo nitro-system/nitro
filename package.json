@@ -20,7 +20,8 @@
     "check:lint": "nx run-many --target=lint --all",
     "check:cspell": "cspell",
     "check:format": "nx format:check && prettier . --check",
-    "test": "npm run check:test && npm run check:e2e && npm run check:lint && npm run check:cspell && npm run check:format"
+    "check:style": "stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"",
+    "test": "npm run check:test && npm run check:e2e && npm run check:lint && npm run check:style && npm run check:cspell && npm run check:format"
   },
   "private": true,
   "dependencies": {
@@ -86,6 +87,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-sonarjs": "^0.13.0",
     "husky": "^8.0.1",
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
@@ -94,6 +96,13 @@
     "postcss": "^8.4.5",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
+    "stylelint": "^14.9.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
     "tailwindcss": "^3.0.2",
     "tailwindcss-rtl": "^0.9.0",
     "ts-jest": "27.1.4",

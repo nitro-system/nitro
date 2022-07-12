@@ -1,13 +1,14 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "sonarjs"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "extends": [
         "eslint:recommended",
         "airbnb-base",
+        "plugin:sonarjs/recommended",
         "plugin:prettier/recommended"
       ],
       "rules": {
