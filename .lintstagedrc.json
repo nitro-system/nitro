@@ -2,11 +2,11 @@
   "*.{css,less,sass,scss}": [
     "stylelint",
     "prettier --write",
-    "cspell -c cspell.json"
+    "cspell -c ./cspell.json"
   ],
-  "*.{ts,js}": ["eslint --fix", "prettier --write", "cspell -c cspell.json"],
+  "*.{ts,js}": ["eslint --fix", "prettier --write", "cspell -c ./cspell.json"],
   "!(*.{ts,js,css,less,sass,scss})": [
     "prettier --write --ignore-unknown",
-    "cspell -c cspell.json"
+    "cspell -c ./cspell.json"
   ]
 }
