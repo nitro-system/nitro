@@ -13,6 +13,7 @@
     "ngcc",
     "nrwl",
     "sonarjs",
+    "Sonarqube",
     "stylelint",
     "tailwindcss"
   ],
