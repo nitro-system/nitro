@@ -1,20 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateServiceDto, UpdateServiceDto } from '@nitro/shared/dtos';
 import { IService } from '@nitro/shared/interfaces';
+import { randomUUID } from 'node:crypto';
 
 @Injectable()
 export class ServicesService {
   private services: IService[] = [
-    { id: '1231', name: 'Bank' },
-    { id: '5765', name: 'Home' },
-    { id: '5157', name: 'School' },
+    { id: '62c654e1-602c-466e-87c1-dc2b273c79a7', name: 'Fast' },
+    { id: '32dd060b-8869-4346-961d-1877f94af14c', name: 'Rank' },
+    { id: 'f8bd3ea3-f326-462f-883d-0672bfe44819', name: 'Money' },
+    { id: 'cec9d908-e5eb-4b63-b82b-3b1910fb3265', name: 'Hero' },
   ];
 
   public create(createServiceDto: CreateServiceDto): IService {
-    const service: IService = {
-      id: (Math.random() + 1).toString(36).substring(7),
-      ...createServiceDto,
-    };
+    const service: IService = { id: randomUUID(), ...createServiceDto };
 
     this.services.unshift(service);
 
