@@ -17,16 +17,22 @@
       <button type="submit" class="rounded-e-3xl bg-sky-500 p-3 text-white disabled:opacity-60" [disabled]="createForm.disabled || createForm.invalid">Create</button>
     </form>
 
-    <ul class="m-0 p-0" *ngIf="services.length">
-      <li *ngFor="let service of services; trackBy:trackById" class="rounded-e-3xl mb-1 flex items-center justify-between bg-gray-100 p-4">
-        <span class="m-0 font-bold">{{ service.name }}</span>
-        <button class="m-0 rounded bg-rose-500 px-2 py-1 text-xs text-white disabled:opacity-60" (click)="delete(service.id)" [disabled]="isDeletingServicesId[service.id]">delete</button>
-      </li>
-    </ul>
+    <ng-container *ngIf="services$ | async as services">
+      <ul class="m-0 p-0" *ngIf="services.length; else emptyArray">
+        <li *ngFor="let service of services; trackBy:trackById" class="rounded-e-3xl mb-1 flex items-center justify-between bg-gray-100 p-4">
+          <span class="m-0 font-bold">{{ service.name }}</span>
+          <button class="m-0 rounded bg-rose-500 px-2 py-1 text-xs text-white disabled:opacity-60" (click)="delete(service.id)" [disabled]="(isDeletingIds$ | async)?.[service.id]">delete</button>
+        </li>
+      </ul>
 
-    <div *ngIf="!services.length" class="p-1 text-center italic text-gray-400">
-      <p *ngIf="isLoadingServices">Loading services...</p>
-      <p *ngIf="!isLoadingServices">No Services Found.. Please Create New Service.</p>
-    </div>
+      <ng-template #emptyArray>
+        <div class="p-1 text-center italic text-gray-400">
+          <p *ngIf="isLoadingServices$ | async; else notFound">Loading services...</p>
+          <ng-template #notFound>
+            <p>No Services Found.. Please Create New Service.</p>
+          </ng-template>
+        </div>
+      </ng-template>
+    </ng-container>
   </div>
 </ion-content>

@@ -1,24 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { HomeService } from './home.service';
 
 @Component({
   selector: 'm-admin-home',
   templateUrl: './home.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage implements OnInit {
-  public title = 'Admin App';
+export class HomePage {
+  public welcomeMessage$ = new BehaviorSubject<string>('loading...');
 
-  public welcomeMessage = 'Loading...';
-
-  public constructor(private readonly homeService: HomeService) {}
-
-  public ngOnInit(): void {
-    this.getWelcomeMessage();
-  }
-
-  private getWelcomeMessage(): void {
-    this.homeService.getWelcomeMessage(this.title).subscribe((message) => {
-      this.welcomeMessage = message;
+  public constructor(homeService: HomeService) {
+    homeService.getWelcomeMessage('admin-web').subscribe((message) => {
+      this.welcomeMessage$.next(message);
     });
   }
 }

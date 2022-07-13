@@ -12,6 +12,7 @@
     "m-admin",
     "github",
     "libs",
-    "b-api"
+    "b-api",
+    "frontend"
   ]
 }
