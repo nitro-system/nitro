@@ -1,7 +1,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-name: Check Commit Message
+name: Lint Commit Messages
 
-on: [pull_request, push]
+on:
+  pull_request:
+    branches: [develop]
 
 jobs:
   commitlint:
