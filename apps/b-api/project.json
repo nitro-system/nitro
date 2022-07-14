@@ -22,7 +22,20 @@
               "replace": "apps/b-api/src/environments/environment.ts",
               "with": "apps/b-api/src/environments/environment.prod.ts"
             }
-          ]
+          ],
+          "generatePackageJson": true
+        },
+        "staging": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/b-api/src/environments/environment.ts",
+              "with": "apps/b-api/src/environments/environment.staging.ts"
+            }
+          ],
+          "generatePackageJson": true
         }
       }
     },
@@ -34,6 +47,9 @@
       "configurations": {
         "production": {
           "buildTarget": "b-api:build:production"
+        },
+        "staging": {
+          "buildTarget": "b-api:build:staging"
         }
       }
     },

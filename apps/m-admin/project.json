@@ -50,6 +50,27 @@
           ],
           "outputHashing": "all"
         },
+        "staging": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/m-admin/src/environments/environment.ts",
+              "with": "apps/m-admin/src/environments/environment.staging.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
@@ -66,6 +87,9 @@
       "configurations": {
         "production": {
           "browserTarget": "m-admin:build:production"
+        },
+        "staging": {
+          "browserTarget": "m-admin:build:staging"
         },
         "development": {
           "browserTarget": "m-admin:build:development"

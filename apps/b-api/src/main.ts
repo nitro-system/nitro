@@ -7,6 +7,7 @@ import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
@@ -17,17 +18,17 @@ async function bootstrap(): Promise<void> {
 
   app.enableVersioning({ type: VersioningType.URI });
 
-  const port = process.env.APP_PORT || 3000;
+  // eslint-disable-next-line no-console
+  console.log(`Environment:  ${environment.name}`);
 
   // eslint-disable-next-line no-console
-  console.log(`APP_ENV:  ${process.env.APP_ENV}`);
+  console.log(`Port: ${environment.port}`);
 
-  // eslint-disable-next-line no-console
-  console.log(`APP_PORT: ${port}`);
+  await app.listen(environment.port);
 
-  await app.listen(port);
-
-  Logger.log(`🚀 Application is running on: http://localhost:${port}`);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${environment.port}`
+  );
 }
 
 bootstrap();

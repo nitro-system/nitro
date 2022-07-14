@@ -3,6 +3,6 @@ import { commonEnv } from './environment.common';
 
 export const environment = {
   production: true,
-  name: AppEnvironmentEnum.PRODUCTION,
+  name: AppEnvironmentEnum.STAGING,
   ...commonEnv,
 } as const;
