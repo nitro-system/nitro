@@ -9,7 +9,7 @@ export class HomeService {
 
   public getWelcomeMessage(project: string): Observable<string> {
     return this.http
-      .get<IWelcome>(`/api/v1/home/welcome/${project.replace(' ', '-')}`)
+      .get<IWelcome>(`/api/v1/home/welcome/${project}`)
       .pipe(map((res) => res.message));
   }
 }

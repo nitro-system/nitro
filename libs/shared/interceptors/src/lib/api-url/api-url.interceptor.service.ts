@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Provider } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 
-@Injectable()
 export class ApiUrlInterceptor implements HttpInterceptor {
+  public constructor(public readonly backendUrl: string) {}
+
   public intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
@@ -18,10 +19,18 @@ export class ApiUrlInterceptor implements HttpInterceptor {
 
     if (request.url.startsWith('/api')) {
       requestCloned = request.clone({
-        url: `${environment.backendUrl}${request.url}`,
+        url: `${this.backendUrl}${request.url}`,
       });
     }
 
     return next.handle(requestCloned);
   }
 }
+
+export const apiUrlInterceptorProvider = (
+  backendUrl = 'http://localhost:3000'
+): Provider => ({
+  provide: HTTP_INTERCEPTORS,
+  useClass: ApiUrlInterceptor.bind(this, backendUrl),
+  multi: true,
+});

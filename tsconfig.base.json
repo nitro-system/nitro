@@ -27,8 +27,10 @@
     "baseUrl": ".",
     "paths": {
       "@nitro/frontend/home": ["libs/frontend/home/src/index.ts"],
+      "@nitro/frontend/services": ["libs/frontend/services/src/index.ts"],
       "@nitro/shared/dtos": ["libs/shared/dtos/src/index.ts"],
       "@nitro/shared/enums": ["libs/shared/enums/src/index.ts"],
+      "@nitro/shared/interceptors": ["libs/shared/interceptors/src/index.ts"],
       "@nitro/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@nitro/shared/utils": ["libs/shared/utils/src/index.ts"]
     }

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { ApiUrlInterceptor } from './interceptors/api-url.interceptor';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,7 @@ import { ApiUrlInterceptor } from './interceptors/api-url.interceptor';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
+    apiUrlInterceptorProvider(environment.backendUrl),
   ],
   bootstrap: [AppComponent],
 })

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FrontendHomeModule } from '@nitro/frontend/home';
 
 import { HomeRoutingModule } from './home.routing';
 import { HomePage } from './home.page';
-import { HomeService } from './home.service';
 
 @NgModule({
   declarations: [HomePage],
-  imports: [CommonModule, HomeRoutingModule],
-  providers: [HomeService],
+  imports: [CommonModule, HomeRoutingModule, FrontendHomeModule],
+  providers: [],
 })
 export class HomeModule {}

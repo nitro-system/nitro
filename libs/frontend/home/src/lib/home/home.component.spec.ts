@@ -13,7 +13,7 @@ describe('HomeComponent', () => {
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    component.welcomeMessage = 'Welcome To Our App!';
+    component.project = 'admin-app';
     fixture.detectChanges();
   });
 

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { FrontendServicesModule } from '@nitro/frontend/services';
 
 import { ServicesRoutingModule } from './services.routing';
 import { ServicesPage } from './services.page';
-import { ServicesService } from './services.service';
 
 @NgModule({
   declarations: [ServicesPage],
@@ -13,8 +12,7 @@ import { ServicesService } from './services.service';
     CommonModule,
     IonicModule,
     ServicesRoutingModule,
-    ReactiveFormsModule,
+    FrontendServicesModule,
   ],
-  providers: [ServicesService],
 })
 export class ServicesModule {}

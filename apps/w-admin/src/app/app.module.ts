@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { ApiUrlInterceptor } from './interceptors/api-url.interceptor';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
-  ],
+  providers: [apiUrlInterceptorProvider(environment.backendUrl)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
