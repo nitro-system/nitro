@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "b-api": "apps/b-api",
+    "frontend-home": "libs/frontend/home",
     "m-admin": "apps/m-admin",
     "m-admin-e2e": "apps/m-admin-e2e",
     "shared-dtos": "libs/shared/dtos",

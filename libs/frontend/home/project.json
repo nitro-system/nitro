@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/frontend/home/src",
+  "prefix": "nitro",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/frontend/home"],
+      "options": {
+        "jestConfig": "libs/frontend/home/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/frontend/home/**/*.ts",
+          "libs/frontend/home/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["frontend"]
+}
