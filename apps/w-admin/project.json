@@ -87,8 +87,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4001,
-        "disableHostCheck": true,
-        "proxyConfig": "apps/w-admin/proxy.conf.json"
+        "disableHostCheck": true
       }
     },
     "extract-i18n": {

@@ -22,10 +22,7 @@
             "output": "./svg"
           }
         ],
-        "styles": [
-          "apps/m-admin/src/theme/variables.scss",
-          "apps/m-admin/src/styles.scss"
-        ],
+        "styles": ["apps/m-admin/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -98,8 +95,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4002,
-        "disableHostCheck": true,
-        "proxyConfig": "apps/m-admin/proxy.conf.json"
+        "disableHostCheck": true
       }
     },
     "extract-i18n": {
