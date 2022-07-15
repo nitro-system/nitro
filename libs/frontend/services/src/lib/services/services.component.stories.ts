@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesComponent } from './services.component';
 import { ServicesService } from './services.service';
 
@@ -11,7 +12,12 @@ export default {
   component: ServicesComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
+      imports: [
+        BrowserAnimationsModule,
+        CommonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+      ],
       providers: [ServicesService, apiUrlInterceptorProvider()],
     }),
   ],

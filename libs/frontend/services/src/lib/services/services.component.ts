@@ -4,6 +4,11 @@ import { CreateServiceDto } from '@nitro/shared/dtos';
 import { IService } from '@nitro/shared/interfaces';
 import { trackById } from '@nitro/shared/utils';
 import { BehaviorSubject, finalize } from 'rxjs';
+import {
+  fadeInDownOnEnterAnimation,
+  fadeInOnEnterAnimation,
+  fadeOutOnLeaveAnimation,
+} from 'angular-animations';
 import { ServicesService } from './services.service';
 
 @Component({
@@ -11,6 +16,12 @@ import { ServicesService } from './services.service';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    fadeInOnEnterAnimation(),
+    fadeInDownOnEnterAnimation(),
+    fadeInOnEnterAnimation(),
+    fadeOutOnLeaveAnimation({ duration: 350 }),
+  ],
 })
 export class ServicesComponent {
   public readonly trackById = trackById;

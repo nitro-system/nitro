@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
@@ -9,7 +11,7 @@ export default {
   component: HomeComponent,
   decorators: [
     moduleMetadata({
-      imports: [HttpClientModule],
+      imports: [BrowserAnimationsModule, CommonModule, HttpClientModule],
       providers: [apiUrlInterceptorProvider(), HomeService],
     }),
   ],
@@ -21,7 +23,7 @@ const Template: Story<HomeComponent> = (args: HomeComponent) => ({
 
 export const Admin = Template.bind({});
 Admin.args = {
-  project: 'admin-App',
+  project: 'admin-app',
 };
 
 export const Org = Template.bind({});
