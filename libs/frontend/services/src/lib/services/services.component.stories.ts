@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesComponent } from './services.component';
 import { ServicesService } from './services.service';
@@ -17,6 +18,7 @@ export default {
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,
+        RouterTestingModule,
       ],
       providers: [ServicesService, apiUrlInterceptorProvider()],
     }),
