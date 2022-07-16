@@ -9,6 +9,7 @@
     "frontend-services-e2e": "apps/frontend-services-e2e",
     "m-admin": "apps/m-admin",
     "m-admin-e2e": "apps/m-admin-e2e",
+    "shared-constants": "libs/shared/constants",
     "shared-dtos": "libs/shared/dtos",
     "shared-enums": "libs/shared/enums",
     "shared-interceptors": "libs/shared/interceptors",

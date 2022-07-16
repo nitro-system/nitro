@@ -13,6 +13,7 @@
     "github",
     "libs",
     "b-api",
-    "frontend"
+    "frontend",
+    "sentry"
   ]
 }

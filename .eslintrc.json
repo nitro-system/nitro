@@ -38,7 +38,8 @@
         "no-useless-constructor": "off",
         "no-return-assign": "off",
         "class-methods-use-this": "off",
-        "no-unused-vars": ["error"]
+        "no-unused-vars": ["error"],
+        "no-param-reassign": "off"
       }
     },
     {
