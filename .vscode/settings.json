@@ -16,6 +16,7 @@
     "b-api",
     "frontend",
     "sentry",
-    "nx"
+    "nx",
+    "jest"
   ]
 }
