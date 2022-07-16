@@ -8,6 +8,6 @@ export const sentryInit = (env: {
   Sentry.init({
     dsn: env.sentry.dns,
     environment: env.name,
-    release: env.version.full,
+    release: `${env.version.full}-${env.name}`,
     tracesSampleRate: 1.0,
   });

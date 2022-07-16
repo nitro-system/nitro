@@ -16,10 +16,6 @@ export const sentryInit = (env: {
       }),
     ],
     environment: env.name,
-    release: env.version.full,
-
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
+    release: `${env.version.full}-${env.name}`,
     tracesSampleRate: 1.0,
   });

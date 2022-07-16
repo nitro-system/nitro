@@ -14,12 +14,12 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ...(environment.production ? [FrontendSentryModule] : []),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    FrontendSentryModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

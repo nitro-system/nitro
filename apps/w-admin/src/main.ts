@@ -4,9 +4,8 @@ import { sentryInit } from '@nitro/frontend/sentry';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-sentryInit(environment);
-
 if (environment.production) {
+  sentryInit(environment);
   enableProdMode();
 }
 

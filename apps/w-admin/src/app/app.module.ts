@@ -11,11 +11,11 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ...(environment.production ? [FrontendSentryModule] : []),
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FrontendSentryModule,
   ],
   providers: [apiUrlInterceptorProvider(environment.backendUrl)],
   bootstrap: [AppComponent],
