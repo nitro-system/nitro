@@ -7,6 +7,7 @@
     "source.fixAll.format": true
   },
   "conventionalCommits.scopes": [
+    "core",
     "lint",
     "tailwind",
     "m-admin",
