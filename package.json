@@ -48,6 +48,7 @@
     "@nestjs/platform-express": "^9.0.3",
     "@nrwl/angular": "14.4.3",
     "@sentry/angular": "^7.7.0",
+    "@sentry/cli": "^2.4.1",
     "@sentry/minimal": "^6.19.7",
     "@sentry/node": "^7.7.0",
     "@sentry/tracing": "^7.7.0",
