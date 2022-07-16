@@ -28,10 +28,6 @@ jobs:
           npm i -g npm@latest
           npm ci
 
-      # Npm Run Test
-      - name: Run Test
-        run: npm run test
-
       # Build application
       - name: Run Build
         run: npm run build -- --source-map
