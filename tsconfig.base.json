@@ -26,7 +26,9 @@
     "preserveConstEnums": true,
     "baseUrl": ".",
     "paths": {
+      "@nitro/backend/sentry": ["libs/backend/sentry/src/index.ts"],
       "@nitro/frontend/home": ["libs/frontend/home/src/index.ts"],
+      "@nitro/frontend/sentry": ["libs/frontend/sentry/src/index.ts"],
       "@nitro/frontend/services": ["libs/frontend/services/src/index.ts"],
       "@nitro/shared/constants": ["libs/shared/constants/src/index.ts"],
       "@nitro/shared/dtos": ["libs/shared/dtos/src/index.ts"],

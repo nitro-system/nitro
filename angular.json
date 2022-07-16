@@ -3,8 +3,10 @@
   "version": 2,
   "projects": {
     "b-api": "apps/b-api",
+    "backend-sentry": "libs/backend/sentry",
     "frontend-home": "libs/frontend/home",
     "frontend-home-e2e": "apps/frontend-home-e2e",
+    "frontend-sentry": "libs/frontend/sentry",
     "frontend-services": "libs/frontend/services",
     "frontend-services-e2e": "apps/frontend-services-e2e",
     "m-admin": "apps/m-admin",

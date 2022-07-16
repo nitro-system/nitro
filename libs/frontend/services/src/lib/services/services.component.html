@@ -10,7 +10,7 @@
   <ng-container *ngIf="services$ | async as services">
     <ul class="m-0 p-0">
       <li @fadeInOnEnter @fadeOutOnLeave *ngFor="let service of services; trackBy: trackById" class="rounded-e-3xl mb-1 flex items-center justify-between bg-gray-100 p-4 dark:bg-gray-600">
-        <span class="m-0 font-bold dark:text-white">{{ service.name }}</span>
+        <span class="m-0 overflow-hidden text-ellipsis font-bold dark:text-white" style="max-width: 80%">{{ service.name }}</span>
         <button class="m-0 rounded bg-rose-500 px-2 py-1 text-xs text-white disabled:opacity-60" (click)="delete(service.id)" [disabled]="(isDeletingIds$ | async)?.[service.id]">delete</button>
       </li>
     </ul>

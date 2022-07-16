@@ -5,12 +5,14 @@
 
 import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
+import { sentryInit } from '@nitro/backend/sentry';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
+
+  sentryInit(environment);
 
   app.enableCors({ origin: '*' });
 

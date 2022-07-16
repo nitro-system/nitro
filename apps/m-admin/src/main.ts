@@ -1,8 +1,11 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { sentryInit } from '@nitro/frontend/sentry';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+
+sentryInit(environment);
 
 if (environment.production) {
   enableProdMode();
