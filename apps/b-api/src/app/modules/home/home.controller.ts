@@ -6,7 +6,7 @@ import { HomeService } from './home.service';
 export class HomeController {
   public constructor(private readonly homeService: HomeService) {}
 
-  @Get('env')
+  @Get()
   public env(): IAppEnvironment {
     return this.homeService.env();
   }
