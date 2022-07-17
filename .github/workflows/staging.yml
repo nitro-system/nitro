@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-# cspell:ignore buildx getsentry sourcemaps
+# cspell:ignore buildx getsentry sourcemaps gonuit
 
-name: Publish Release & Create Change Log
+name: Publish new release
 
 on:
   push:
@@ -169,34 +169,37 @@ jobs:
           password: ${{ secrets.HEROKU_STAGING_API_KEY }}
 
       # Build and push Backend Api
-      - name: Build and push Backend Api
-        uses: docker/build-push-action@v3
+      - name: Build, Push and Release a Backend Api container to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          push: true
-          tags: registry.heroku.com/ns-staging_b_api/web:latest
-          target: backend
-          build-args: |
-            app=b-api
-            stage=staging
+          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
+          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
+          heroku_app_name: ns-staging_b_api
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: '--build-args app=b-api --build-args stage=staging --target=backend'
+          process_type: web
 
       # Build and push Admin Web
-      - name: Build and push Admin Web
-        uses: docker/build-push-action@v3
+      - name: Build, Push and Release a Admin Web container to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          push: true
-          tags: registry.heroku.com/ns-staging_w_admin/web:latest
-          target: frontend
-          build-args: |
-            app=w-admin
-            stage=staging
+          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
+          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
+          heroku_app_name: ns-staging_w_admin
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: '--build-args app=w-admin --build-args stage=staging --target=frontend'
+          process_type: web
 
       # Build and push Admin Mobile
-      - name: Build and push Admin Mobile
-        uses: docker/build-push-action@v3
+      - name: Build, Push and Release a Admin Web container to Heroku.
+        uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          push: true
-          tags: registry.heroku.com/ns-staging_m_admin/web:latest
-          target: frontend
-          build-args: |
-            app=m-admin
-            stage=staging
+          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
+          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
+          heroku_app_name: ns-staging_m_admin
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: '--build-args app=m_admin --build-args stage=staging --target=frontend'
+          process_type: web
