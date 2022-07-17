@@ -2,6 +2,7 @@ ARG stage
 
 # STAGE: Build Application
 FROM node:16.10.0-alpine3.14 AS build
+ARG stage
 WORKDIR /usr/src/app
 COPY . .
 RUN npm i -g npm@latest
