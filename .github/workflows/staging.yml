@@ -177,7 +177,7 @@ jobs:
           heroku_app_name: ns-staging_b_api
           dockerfile_directory: ./
           dockerfile_name: Dockerfile
-          docker_options: '--build-args app=b-api --build-args stage=staging --target=backend'
+          docker_options: '--build-arg app=b-api --build-arg stage=staging --target=backend'
           process_type: web
 
       # Build and push Admin Web
@@ -189,7 +189,7 @@ jobs:
           heroku_app_name: ns-staging_w_admin
           dockerfile_directory: ./
           dockerfile_name: Dockerfile
-          docker_options: '--build-args app=w-admin --build-args stage=staging --target=frontend'
+          docker_options: '--build-arg app=w-admin --build-arg stage=staging --target=frontend'
           process_type: web
 
       # Build and push Admin Mobile
@@ -201,5 +201,5 @@ jobs:
           heroku_app_name: ns-staging_m_admin
           dockerfile_directory: ./
           dockerfile_name: Dockerfile
-          docker_options: '--build-args app=m_admin --build-args stage=staging --target=frontend'
+          docker_options: '--build-arg app=m_admin --build-arg stage=staging --target=frontend'
           process_type: web
