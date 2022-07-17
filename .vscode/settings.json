@@ -17,6 +17,7 @@
     "frontend",
     "sentry",
     "nx",
-    "jest"
+    "jest",
+    "docker"
   ]
 }
