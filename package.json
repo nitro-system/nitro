@@ -47,6 +47,7 @@
     "@nestjs/mapped-types": "1.1.0",
     "@nestjs/platform-express": "^9.0.3",
     "@nrwl/angular": "14.4.3",
+    "@nrwl/nx-cloud": "^14.2.0",
     "@sentry/angular": "^7.7.0",
     "@sentry/cli": "^2.4.1",
     "@sentry/minimal": "^6.19.7",
