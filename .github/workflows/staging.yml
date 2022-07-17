@@ -160,38 +160,21 @@ jobs:
             app=m-admin
             stage=staging
 
+      # Login to Heroku Registry
+      - name: Login to Heroku Registry
+        uses: docker/login-action@v2
+        with:
+          registry: registry.heroku.com
+          username: ${{ secrets.HEROKU_STAGING_USERNAME }}
+          password: ${{ secrets.HEROKU_STAGING_API_KEY }}
+
       # Build and push Backend Api
-      - name: Build, Push and Release a Backend Api container to Heroku.
-        uses: gonuit/heroku-docker-deploy@v1.3.3
+      - name: Build and push Backend Api
+        uses: docker/build-push-action@v3
         with:
-          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
-          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
-          heroku_app_name: ns-staging_b_api
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: '--target=backend --build-arg app=b-api --build-arg stage=staging'
-          process_type: web
-
-      # Build and push Admin Web
-      - name: Build, Push and Release a Admin Web container to Heroku.
-        uses: gonuit/heroku-docker-deploy@v1.3.3
-        with:
-          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
-          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
-          heroku_app_name: ns-staging_w_admin
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: '--target=frontend --build-arg app=w-admin --build-arg stage=staging'
-          process_type: web
-
-      # Build and push Admin Mobile
-      - name: Build, Push and Release a Admin Web container to Heroku.
-        uses: gonuit/heroku-docker-deploy@v1.3.3
-        with:
-          email: ${{ secrets.HEROKU_STAGING_USERNAME }}
-          heroku_api_key: ${{ secrets.HEROKU_STAGING_API_KEY }}
-          heroku_app_name: ns-staging_m_admin
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: '--target=frontend --build-arg app=m_admin --build-arg stage=staging'
-          process_type: web
+          push: true
+          tags: registry.heroku.com/ns-staging_b_api/web:latest
+          target: backend
+          build-args: |
+            app=b-api
+            stage=staging
