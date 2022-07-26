@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/nitro-system/nitro/compare/v1.0.0...v1.0.1) (2022-07-26)
+
+### Bug Fixes
+
+- **husky:** :lock: set husky hooks and git hooks executable ([f12b9dd](https://github.com/nitro-system/nitro/commit/f12b9dd6b50608c95334d9c310394f948281925f))
+- **sentry:** :fire: remove env name from sentry release version ([33ba46c](https://github.com/nitro-system/nitro/commit/33ba46c5c4798af5142d087c186b2b26f06153d6))
+
 # 1.0.0 (2022-07-17)
 
 ### Bug Fixes
