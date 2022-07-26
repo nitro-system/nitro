@@ -38,7 +38,7 @@
     "decorate-angular-cli.js",
     ".browserslistrc",
     "cspell.json",
-    ".vscode",
+    ".vscode/**",
     "jest.config.ts",
     "android",
     "ios",

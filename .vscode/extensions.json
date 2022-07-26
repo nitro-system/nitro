@@ -3,15 +3,10 @@
     "firsttris.vscode-jest-runner",
     "aaron-bond.better-comments",
     "ahmadawais.shades-of-purple",
-    "amiralizadeh9480.laravel-extra-intellisense",
     "Angular.ng-template",
-    "austenc.laravel-blade-spacer",
-    "bmewburn.vscode-intelephense-client",
     "bradlc.vscode-tailwindcss",
-    "cjhowe7.laravel-blade",
     "ckolkman.vscode-postgres",
     "codezombiech.gitignore",
-    "codingyu.laravel-goto-view",
     "cweijan.vscode-mysql-client2",
     "DavidAnson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
@@ -53,8 +48,6 @@
     "mtxr.sqltools",
     "myxvisual.vscode-ts-uml",
     "nrwl.angular-console",
-    "onecentlin.laravel-blade",
-    "onecentlin.laravel5-snippets",
     "pflannery.vscode-versionlens",
     "PKief.material-icon-theme",
     "pnp.polacode",
@@ -65,7 +58,6 @@
     "redhat.vscode-yaml",
     "ritwickdey.live-sass",
     "ritwickdey.LiveServer",
-    "ryannaddy.laravel-artisan",
     "sdras.night-owl",
     "Shan.code-settings-sync",
     "shufo.vscode-blade-formatter",
@@ -76,9 +68,7 @@
     "vivaxy.vscode-conventional-commits",
     "wayou.vscode-todo-highlight",
     "wix.vscode-import-cost",
-    "xdebug.php-debug",
     "zhuangtongfa.material-theme",
-    "Zignd.html-css-class-completion",
-    "zobo.php-intellisense"
+    "Zignd.html-css-class-completion"
   ]
 }
