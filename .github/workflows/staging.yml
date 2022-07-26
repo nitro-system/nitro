@@ -159,14 +159,24 @@ jobs:
       #       app=m-admin
       #       stage=staging
 
-      # Deploy To Staging Server
-      - name: Deploy to staging server
-        uses: appleboy/ssh-action@master # cspell:ignore appleboy
+      # Copy shell files to the server
+      - name: Copy shell files to the server
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DO_STAGING_HOST }}
           username: ${{ secrets.DO_STAGING_USERNAME }}
           key: ${{ secrets.DO_STAGING_KEY }}
           source: 'deploy.staging.sh,docker-compose.staging.yml'
           target: 'root/nitro'
-          script: |
-            ls
+
+      # Deploy To Staging Server
+      # - name: Deploy to staging server
+      #   uses: appleboy/ssh-action@master # cspell:ignore appleboy
+      #   with:
+      #     host: ${{ secrets.DO_STAGING_HOST }}
+      #     username: ${{ secrets.DO_STAGING_USERNAME }}
+      #     key: ${{ secrets.DO_STAGING_KEY }}
+      #     source: 'deploy.staging.sh,docker-compose.staging.yml'
+      #     target: 'root/nitro'
+      #     script: |
+      #       ls
