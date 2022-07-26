@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/nitro-system/nitro/compare/v1.0.1...v1.0.2) (2022-07-26)
+
+### Bug Fixes
+
+- **frontend:** :alien: update backendUrl to the staging and production of digital ocean ([2bc0781](https://github.com/nitro-system/nitro/commit/2bc0781e0506c5736a4eb3cc2421660dc134ed3a))
+
 ## [1.0.1](https://github.com/nitro-system/nitro/compare/v1.0.0...v1.0.1) (2022-07-26)
 
 ### Bug Fixes
