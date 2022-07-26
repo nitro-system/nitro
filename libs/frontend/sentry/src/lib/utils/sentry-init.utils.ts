@@ -16,6 +16,6 @@ export const sentryInit = (env: {
       }),
     ],
     environment: env.name,
-    release: `${env.version.full}-${env.name}`,
+    release: env.version.full,
     tracesSampleRate: 1.0,
   });

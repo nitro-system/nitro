@@ -61,7 +61,7 @@ jobs:
         with:
           environment: staging
           sourcemaps: ./dist/apps/w-admin
-          version: ${{ steps.package-version.outputs.current-version }}-staging
+          version: ${{ steps.package-version.outputs.current-version }}
           ignore_empty: true
 
       # Create Sentry Release For Mobile Admin
@@ -74,7 +74,7 @@ jobs:
         with:
           environment: staging
           sourcemaps: ./dist/apps/m-admin
-          version: ${{ steps.package-version.outputs.current-version }}-staging
+          version: ${{ steps.package-version.outputs.current-version }}
           ignore_empty: true
 
       # Create Sentry Release For Backend Api
@@ -87,7 +87,7 @@ jobs:
         with:
           environment: staging
           sourcemaps: ./dist/apps/b-api
-          version: ${{ steps.package-version.outputs.current-version }}-staging
+          version: ${{ steps.package-version.outputs.current-version }}
           ignore_empty: true
 
       # Checkout Develop
