@@ -30,5 +30,5 @@
 ### Performance Improvements
 
 - **b-api:** :zap: improve backend generator uuid by using `randomUUID` from `node:crypto` ([a35e5c6](https://github.com/nitro-system/nitro/commit/a35e5c6046fbe54d916cdfe5abcd7617fba2d717))
-- **frontend:** :zap: improve apps preformance by setting `ChangeDetector` to `OnPush` Strategy ([d2454bf](https://github.com/nitro-system/nitro/commit/d2454bf12d029389e665c398afe107018dc7d517))
+- **frontend:** :zap: improve apps performance by setting `ChangeDetector` to `OnPush` Strategy ([d2454bf](https://github.com/nitro-system/nitro/commit/d2454bf12d029389e665c398afe107018dc7d517))
 - **lint:** :zap: improve eslint rules and extends ([3c039a7](https://github.com/nitro-system/nitro/commit/3c039a7bf37d72958f4f2172294f30d332e7f70d))
