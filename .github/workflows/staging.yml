@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # # Get checkout
-      # - name: Checkout
-      #   uses: actions/checkout@v3
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
 
       # # Install Node js
       # - name: Use Node.js
@@ -167,7 +167,7 @@ jobs:
           username: ${{ secrets.DO_STAGING_USERNAME }}
           key: ${{ secrets.DO_STAGING_KEY }}
           source: 'deploy.staging.sh,docker-compose.staging.yml'
-          target: 'nitro'
+          target: 'root/nitro'
 
       # Deploy To Staging Server
       # - name: Deploy to staging server
