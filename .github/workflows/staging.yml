@@ -158,3 +158,13 @@ jobs:
           build-args: |
             app=m-admin
             stage=staging
+
+      # Deploy To Staging Server
+      - name: Deploy to staging server
+        uses: appleboy/ssh-action@master # cspell:ignore appleboy
+        with:
+          host: ${{ secrets.DO_STAGING_HOST }}
+          username: ${{ secrets.DO_STAGING_USERNAME }}
+          key: ${{ secrets.DO_STAGING_KEY }}
+          script: |
+            cd /root/nitro && ./deploy.staging.sh
