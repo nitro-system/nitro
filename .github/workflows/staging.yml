@@ -170,6 +170,7 @@ jobs:
           source: 'deploy.staging.sh,docker-compose.staging.yml'
           rm: true
           target: 'nitro'
+          timeout: 900000
 
       # Deploy To Staging Server
       - name: Deploy to staging server
