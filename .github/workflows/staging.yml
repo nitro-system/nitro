@@ -28,10 +28,6 @@ jobs:
           npm i -g npm@latest
           npm ci
 
-      # Build application
-      - name: Run Build
-        run: npm run build -- --source-map
-
       # Install Semantic Release Global
       - name: Install Semantic Release Global
         run: npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
@@ -45,6 +41,10 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
           GIT_COMMITTER_NAME: ${{secrets.AUTHOR_NAME}}
           GIT_COMMITTER_EMAIL: ${{secrets.AUTHOR_EMAIL}}
+
+      # Build application
+      - name: Run Build
+        run: npm run build -- --source-map
 
       # Get Package.json Version
       - name: Get Package.json Version
