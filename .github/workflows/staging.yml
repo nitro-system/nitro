@@ -121,6 +121,7 @@ jobs:
       - name: Build and push Build
         uses: docker/build-push-action@v3
         with:
+          push: true
           tags: nitrosystem/staging_build:latest
           target: dist
           build-args: |
