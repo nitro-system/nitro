@@ -4,6 +4,6 @@ import { commonEnv } from './environment.common';
 export const environment = {
   production: true,
   name: AppEnvironmentEnum.PRODUCTION,
-  backendUrl: 'https://ns-production-b-api.herokuapp.com',
+  backendUrl: 'http://143.244.158.57',
   ...commonEnv,
 } as const;
