@@ -159,22 +159,3 @@ jobs:
           build-args: |
             app=m-admin
             stage=staging
-
-      # Login to Heroku Registry
-      - name: Login to Heroku Registry
-        uses: docker/login-action@v2
-        with:
-          registry: registry.heroku.com
-          username: ${{ secrets.HEROKU_STAGING_USERNAME }}
-          password: ${{ secrets.HEROKU_STAGING_API_KEY }}
-
-      # Build and push Backend Api
-      - name: Build and push Backend Api
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: registry.heroku.com/ns-staging_b_api/web:latest
-          target: backend
-          build-args: |
-            app=b-api
-            stage=staging
