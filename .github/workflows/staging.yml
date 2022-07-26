@@ -167,16 +167,15 @@ jobs:
           username: ${{ secrets.DO_STAGING_USERNAME }}
           key: ${{ secrets.DO_STAGING_KEY }}
           source: 'deploy.staging.sh,docker-compose.staging.yml'
-          target: 'root/nitro'
+          target: 'nitro'
 
       # Deploy To Staging Server
-      # - name: Deploy to staging server
-      #   uses: appleboy/ssh-action@master # cspell:ignore appleboy
-      #   with:
-      #     host: ${{ secrets.DO_STAGING_HOST }}
-      #     username: ${{ secrets.DO_STAGING_USERNAME }}
-      #     key: ${{ secrets.DO_STAGING_KEY }}
-      #     source: 'deploy.staging.sh,docker-compose.staging.yml'
-      #     target: 'root/nitro'
-      #     script: |
-      #       ls
+      - name: Deploy to staging server
+        uses: appleboy/ssh-action@master # cspell:ignore appleboy
+        with:
+          host: ${{ secrets.DO_STAGING_HOST }}
+          username: ${{ secrets.DO_STAGING_USERNAME }}
+          key: ${{ secrets.DO_STAGING_KEY }}
+          script: |
+            cd ./nitro
+            ls
