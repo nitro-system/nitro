@@ -170,7 +170,6 @@ jobs:
           source: 'deploy.staging.sh,docker-compose.staging.yml'
           rm: true
           target: 'nitro'
-          timeout: '900000s'
 
       # Deploy To Staging Server
       - name: Deploy to staging server
@@ -179,6 +178,7 @@ jobs:
           host: ${{ secrets.DO_STAGING_HOST }}
           username: ${{ secrets.DO_STAGING_USERNAME }}
           key: ${{ secrets.DO_STAGING_KEY }}
+          timeout: '900000s'
           script: |
             cd ./nitro
             ./deploy.staging.sh
