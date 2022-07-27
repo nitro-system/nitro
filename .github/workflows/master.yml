@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 # cspell:ignore buildx getsentry sourcemaps gonuit
 
-name: Deploy production
+name: Deploy to master
 
 on:
   push:
@@ -95,6 +95,7 @@ jobs:
       - name: Build and push Build
         uses: docker/build-push-action@v3
         with:
+          push: true
           tags: nitrosystem/production_build:latest
           target: dist
           build-args: |
@@ -132,3 +133,26 @@ jobs:
           build-args: |
             app=m-admin
             stage=production
+
+      # Copy shell files to the server
+      - name: Copy shell files to the server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DO_PRODUCTION_HOST }}
+          username: ${{ secrets.DO_PRODUCTION_USERNAME }}
+          key: ${{ secrets.DO_PRODUCTION_KEY }}
+          source: 'deploy.production.sh,docker-compose.production.yml'
+          rm: true
+          target: 'nitro'
+
+      # Deploy To Production Server
+      - name: Deploy to production server
+        uses: appleboy/ssh-action@master # cspell:ignore appleboy
+        with:
+          host: ${{ secrets.DO_PRODUCTION_HOST }}
+          username: ${{ secrets.DO_PRODUCTION_USERNAME }}
+          key: ${{ secrets.DO_PRODUCTION_KEY }}
+          timeout: '900000s'
+          script: |
+            cd ./nitro
+            ./deploy.production.sh
