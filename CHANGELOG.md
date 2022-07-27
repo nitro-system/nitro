@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/nitro-system/nitro/compare/v1.0.2...v1.0.3) (2022-07-27)
+
+### Bug Fixes
+
+- **frontend:** 🔧 add port to the `backendUrl` env ([2bbbd1d](https://github.com/nitro-system/nitro/commit/2bbbd1dab951aa0c7d0b7f4bf5ac26685d30f4e9))
+
 ## [1.0.2](https://github.com/nitro-system/nitro/compare/v1.0.1...v1.0.2) (2022-07-26)
 
 ### Bug Fixes
