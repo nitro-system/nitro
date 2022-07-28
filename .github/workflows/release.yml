@@ -30,7 +30,6 @@ jobs:
       # Extract Variables
       - name: Extract variables
         shell: bash # cspell:ignore elif
-        id: vars
         run: |
           echo "${{ env.DO_HOST }}"
           echo ${{ env.DO_HOST }}
