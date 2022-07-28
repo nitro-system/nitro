@@ -6,13 +6,12 @@ import { environment } from '../../../../src/environments/environment';
 export class HomeService {
   private welcomeMessage = 'Welcome To Our';
 
-  private environment: IAppEnvironment = {
-    environment: environment.name,
-    production: environment.production,
-  };
-
   public env(): IAppEnvironment {
-    return this.environment;
+    return {
+      environment: environment.name,
+      production: environment.production,
+      version: environment.version.full,
+    };
   }
 
   public getWelcomeMessage(project: string): IWelcome {

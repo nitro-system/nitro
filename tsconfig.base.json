@@ -24,9 +24,12 @@
     "noImplicitReturns": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "@nitro/backend/sentry": ["libs/backend/sentry/src/index.ts"],
+      "@nitro/frontend/footer": ["libs/frontend/footer/src/index.ts"],
       "@nitro/frontend/home": ["libs/frontend/home/src/index.ts"],
       "@nitro/frontend/sentry": ["libs/frontend/sentry/src/index.ts"],
       "@nitro/frontend/services": ["libs/frontend/services/src/index.ts"],

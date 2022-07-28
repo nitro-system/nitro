@@ -1,7 +1,8 @@
 import { IWorkspaceVersion } from '@nitro/shared/interfaces';
+import packageJson1 from 'package.json';
+import * as packageJson2 from 'package.json';
 
-const packageJson = { version: '0.0.0' };
-const { version: full } = packageJson;
+const full = (packageJson1 || packageJson2).version;
 const versionSplit = full.split('.');
 
 export const workspaceVersion: IWorkspaceVersion = {

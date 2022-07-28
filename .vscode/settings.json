@@ -21,6 +21,7 @@
     "docker",
     "heroku",
     "vscode",
-    "husky"
+    "husky",
+    "all"
   ]
 }

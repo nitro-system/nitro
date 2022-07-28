@@ -4,6 +4,7 @@
   "projects": {
     "b-api": "apps/b-api",
     "backend-sentry": "libs/backend/sentry",
+    "frontend-footer": "libs/frontend/footer",
     "frontend-home": "libs/frontend/home",
     "frontend-home-e2e": "apps/frontend-home-e2e",
     "frontend-sentry": "libs/frontend/sentry",

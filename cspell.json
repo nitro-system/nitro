@@ -20,7 +20,8 @@
     "Sonarqube",
     "storysource",
     "stylelint",
-    "tailwindcss"
+    "tailwindcss",
+    "titlecase"
   ],
   "language": "en",
   "ignoreRegExpList": ["/[ء-ي]+/"],

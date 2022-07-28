@@ -1,0 +1,3 @@
+<footer class="end-2 fixed bottom-2 z-50 flex rounded-md px-2 py-1" [ngClass]="env.production ? 'bg-emerald-600' : 'bg-amber-600'" [title]="env.backendUrl">
+  <span class="text-xs text-white">v{{ env.version.full }}-{{ env.name }}</span>
+</footer>

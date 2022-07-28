@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { apiUrlInterceptorProvider } from '@nitro/shared/interceptors';
 import { FrontendSentryModule } from '@nitro/frontend/sentry';
-
+import { FrontendFooterModule } from '@nitro/frontend/footer';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { environment } from '../environments/environment';
@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FrontendFooterModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
