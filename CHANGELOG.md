@@ -1,3 +1,21 @@
+## [1.1.6](https://github.com/nitro-system/nitro/compare/v1.1.5...v1.1.6) (2022-07-28)
+
+### Bug Fixes
+
+- **ci:** 💚 add testing ci ([610d90a](https://github.com/nitro-system/nitro/commit/610d90a7b092c41aeb27a8c792cff580a620c24c))
+- **ci:** 💚 add testing ci ([5fa43b6](https://github.com/nitro-system/nitro/commit/5fa43b6f92f9f3bb86f2e90764fa51feb3c7d971))
+- **ci:** 💚 add testing ci ([0a53b63](https://github.com/nitro-system/nitro/commit/0a53b6396b6c115b8a5b8983e95fdb932697785c))
+- **ci:** 💚 add testing ci ([f775d5b](https://github.com/nitro-system/nitro/commit/f775d5b310a5e46366a9bca12f0adcdba95d13c9))
+- **ci:** 💚 add testing ci ([ec0bef6](https://github.com/nitro-system/nitro/commit/ec0bef6ec4b2153ffd61fd14ff7dfab79d6b4e13))
+- **core:** 🔥 rename npm script key ([cb3754f](https://github.com/nitro-system/nitro/commit/cb3754f2f021e7c38ef7b374ef36f5883dd018fd))
+- **github:** 💚 fix ci bugs and issues ([31425ce](https://github.com/nitro-system/nitro/commit/31425ce9a5198c1a7ce3e3b11332dad676ddb861))
+- **github:** 💚 fix ci bugs and issues ([2a9f0d6](https://github.com/nitro-system/nitro/commit/2a9f0d6dc866886fe0b986a32f4d289682d2972c))
+- **github:** 💚 fix ci bugs and issues ([89bd520](https://github.com/nitro-system/nitro/commit/89bd52079f99c1c638644ad0c0c9ca22e29b44ce))
+- **github:** 💚 fix ci bugs and issues ([08041c5](https://github.com/nitro-system/nitro/commit/08041c5a25a675899b06026334fc6ab3890618be))
+- **github:** 💚 fix ci bugs and issues ([7f1e6c3](https://github.com/nitro-system/nitro/commit/7f1e6c3ab4f1d6a3030f43ef0f2ca39648cded19))
+- **github:** 💚 fix ci bugs and issues ([89f7a40](https://github.com/nitro-system/nitro/commit/89f7a4086a60ff58a38d0e7e06667f7704aec764))
+- **sonar:** 💚 fix ci sonar properties version ([391e5c6](https://github.com/nitro-system/nitro/commit/391e5c6a4fb50dddafe2e0916ada841a4a6ecd4c))
+
 ## [1.1.5](https://github.com/nitro-system/nitro/compare/v1.1.4...v1.1.5) (2022-07-28)
 
 ### Bug Fixes
