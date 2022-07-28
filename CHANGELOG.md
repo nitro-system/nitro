@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/nitro-system/nitro/compare/v1.0.3...v1.1.0) (2022-07-28)
+
+### Features
+
+- **all:** ✨ show environment variables and fix package.json version issue ([d8c71b3](https://github.com/nitro-system/nitro/commit/d8c71b3ec17949f1b5af528b435b31369e76abf7))
+
 ## [1.0.3](https://github.com/nitro-system/nitro/compare/v1.0.2...v1.0.3) (2022-07-27)
 
 ### Bug Fixes
