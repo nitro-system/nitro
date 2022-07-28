@@ -22,7 +22,7 @@
     "check:cspell": "cspell",
     "check:format": "nx format:check && prettier . --check",
     "check:style": "stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"",
-    "test:ci": "npm run check:test && npm run check:e2e && npm run check:lint && npm run check:style && npm run check:cspell && npm run check:format"
+    "test": "npm run check:test && npm run check:e2e && npm run check:lint && npm run check:style && npm run check:cspell && npm run check:format"
   },
   "private": true,
   "dependencies": {
