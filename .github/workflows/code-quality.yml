@@ -57,7 +57,7 @@ jobs:
       # Run Spell Check
       - name: Run Spell Check 🔧
         run: |
-          npx cspell
+          npx cspell --no-progress --show-suggestions --show-context
 
   format:
     runs-on: ubuntu-latest
@@ -99,4 +99,4 @@ jobs:
       # Run Style Check
       - name: Run Style Check 🔧
         run: |
-          npx stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"
+          npx stylelint "{apps,libs}/**/*.{css,less,sass,scss,sss}"
