@@ -27,9 +27,9 @@ jobs:
       - name: Extract environments
         shell: bash # cspell:ignore elif
         run: |
-          version='latest'
-          if [ $branch = 'develop' ]; then version=${{ steps.package.outputs.current-version }}; fi
-          sed -i -e 's/$APP_VERSION/'"$version"'/g' ./sonar-project.properties
+          version="latest"
+          if [ $branch != "develop" ]; then version=${{ steps.package.outputs.current-version }}; fi
+          sed -i -e 's/$APP_VERSION/'"$version"'/g' "./sonar-project.properties"
 
       # Run Sonarqube
       - name: SonarCloud Scan
