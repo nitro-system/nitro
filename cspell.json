@@ -23,7 +23,7 @@
     "tailwindcss",
     "titlecase"
   ],
-  "language": "en",
+  "language": "en,ar",
   "ignoreRegExpList": ["/[ء-ي]+/"],
   "files": ["**"],
   "enableGlobDot": true,
