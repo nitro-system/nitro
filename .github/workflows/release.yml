@@ -210,7 +210,7 @@ jobs:
   # Deploy shell and docker-compose files and run docker compose in digital ocean
   deploy:
     runs-on: ubuntu-latest
-    # needs: docker
+    needs: docker
     steps:
       # Get checkout
       - name: Checkout
