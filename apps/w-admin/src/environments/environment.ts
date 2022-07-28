@@ -4,6 +4,6 @@ import { commonEnv } from './environment.common';
 export const environment = {
   production: false,
   name: AppEnvironmentEnum.DEVELOPMENT,
-  backendUrl: 'http://localhost:3000',
+  backendUrl: `http://localhost:${commonEnv.backendApiPort}`,
   ...commonEnv,
 } as const;
