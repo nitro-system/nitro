@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/nitro-system/nitro/compare/v1.1.4...v1.1.5) (2022-07-28)
+
+### Bug Fixes
+
+- **ci:** 💚 add testing ci ([08373ef](https://github.com/nitro-system/nitro/commit/08373efd282db43672ddf1d27127000d881a5f40))
+- **github:** 💚 merge conflicts from two branches ([4f04171](https://github.com/nitro-system/nitro/commit/4f04171cbbe0f90be7f1ccde9c25179c4ef6a829))
+
 ## [1.1.3](https://github.com/nitro-system/nitro/compare/v1.1.2...v1.1.3) (2022-07-28)
 
 ### Bug Fixes
