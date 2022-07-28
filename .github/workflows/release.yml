@@ -11,10 +11,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # Extract Variables
-      - name: Extract variables
+      # Extract Environments
+      - name: Extract environments
         shell: bash # cspell:ignore elif
-        id: vars
         run: |
           branch=${GITHUB_REF#refs/heads/}
           echo "DO_HOST=$(if [ $branch = 'staging' ]; then echo ${{ secrets.DO_PRODUCTION_HOST }}; else echo ${{ secrets.DO_STAGING_HOST }}; fi)" >> $GITHUB_ENV
