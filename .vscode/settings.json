@@ -22,6 +22,7 @@
     "heroku",
     "vscode",
     "husky",
-    "all"
+    "all",
+    "w-admin"
   ]
 }
