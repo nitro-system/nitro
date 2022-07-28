@@ -99,8 +99,7 @@ jobs:
       # Install Dependencies
       - name: Install dependencies 🔧
         run: |
-          npm i -g npm@latest
-          npm i stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-config-sass-guidelines stylelint-config-idiomatic-order -D
+          npm i stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-config-sass-guidelines stylelint-config-idiomatic-order -g
 
       # Run Style Check
       - name: Run Style Check 🔧
