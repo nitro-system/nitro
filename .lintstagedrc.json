@@ -9,7 +9,8 @@
     "prettier --write",
     "npx cspell -c ./cspell.json"
   ],
-  "!(*.{ts,js,css,less,sass,scss})": [
+  "package.json": ["npx sort-package-json"],
+  "!(*.{ts,js,css,less,sass,scss}|package.json)": [
     "prettier --write --ignore-unknown",
     "npx cspell -c cspell.json"
   ]

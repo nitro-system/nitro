@@ -1,27 +1,44 @@
 {
   "name": "nitro-system",
   "displayName": "Nitro System",
-  "description": "Nitro System Project",
   "version": "1.1.9",
-  "homepage": "https://github.com/nitro-system/nitro#readme",
+  "private": true,
+  "description": "Nitro System Project",
   "keywords": [
     "nitro",
     "angular",
     "nestjs",
-    "ionic"
+    "ionic",
+    "workspace"
   ],
+  "homepage": "https://github.com/nitro-system/nitro#readme",
+  "bugs": {
+    "url": "https://github.com/nitro-system/nitro/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitro-system/nitro.git"
+  },
+  "funding": [
+    "https://ng-omar.com/donate"
+  ],
+  "license": "UNLICENSE",
+  "author": {
+    "name": "Omar Elsayed",
+    "email": "challengeromar97@gmail.com",
+    "url": "https://ng-omar.com"
+  },
   "scripts": {
-    "prepare": "husky install",
-    "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx run-many --target=serve --all --parallel=false",
     "build": "nx run-many --target=build --all --parallel=false",
-    "check:test": "nx run-many --target=test --all",
     "check:e2e": "nx run-many --target=e2e --all --parallel=false",
     "check:lint": "nx run-many --target=lint --all",
+    "check:test": "nx run-many --target=test --all",
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
+    "ng": "nx",
+    "prepare": "husky install",
+    "start": "nx run-many --target=serve --all --parallel=false",
     "test": "npm run check:test && npm run check:e2e && npm run check:lint"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~14.1.0",
     "@angular/common": "~14.1.0",
@@ -126,24 +143,8 @@
     "typescript": "~4.7.4",
     "webpack": "^5.74.0"
   },
-  "author": {
-    "name": "Omar Elsayed",
-    "email": "challengeromar97@gmail.com",
-    "url": "https://ng-omar.com"
-  },
   "engines": {
     "node": "16.10.0",
     "npm": ">=8"
-  },
-  "funding": [
-    "https://ng-omar.com/donate"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nitro-system/nitro.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nitro-system/nitro/issues"
-  },
-  "license": "UNLICENSE"
+  }
 }
