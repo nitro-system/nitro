@@ -1,3 +1,9 @@
+## [1.1.7](https://github.com/nitro-system/nitro/compare/v1.1.6...v1.1.7) (2022-07-28)
+
+### Bug Fixes
+
+- **github:** 💚 double check pulling from origin while cd jobs works ([3f7ca86](https://github.com/nitro-system/nitro/commit/3f7ca86212f0558781eb832eb5dc19b476a079fb))
+
 ## [1.1.6](https://github.com/nitro-system/nitro/compare/v1.1.5...v1.1.6) (2022-07-28)
 
 ### Bug Fixes
