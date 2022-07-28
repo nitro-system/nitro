@@ -8,9 +8,216 @@ on:
     branches: [staging, master]
 
 jobs:
-  test:
+  # Run Semantic Release only on staging branch
+  semantic-release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
     steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+
+      # Run Semantic Release
+      - name: Semantic Release
+        run: |
+          npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
+          npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GIT_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
+          GIT_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
+          GIT_COMMITTER_NAME: ${{secrets.AUTHOR_NAME}}
+          GIT_COMMITTER_EMAIL: ${{secrets.AUTHOR_EMAIL}}
+
+      # Checkout Develop
+      - name: Checkout Develop
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      # Pull From `Staging` to `Develop`
+      - name: Pull From `Staging` to `Develop`
+        run: |
+          git pull origin staging
+          git push
+
+  # Publish New Release To Sentry
+  sentry:
+    runs-on: ubuntu-latest
+    needs: semantic-release
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Extract Environments
+      - name: Extract environments
+        shell: bash # cspell:ignore elif
+        run: |
+          branch=${GITHUB_REF#refs/heads/}
+          echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
+
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+
+      # Install Dependencies
+      - name: Install dependencies 🔧
+        run: |
+          npm i -g npm@latest
+          npm ci
+
+      # Build application
+      - name: Run Build
+        run: npm run build -- --source-map
+
+      # Get Package.json Version
+      - name: Get Package.json Version
+        id: package
+        uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
+
+      # Create Sentry Release For Web Admin
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: nitro-system
+          SENTRY_PROJECT: web-admin
+        with:
+          environment: ${{ env.env }}
+          sourcemaps: ./dist/apps/w-admin
+          version: ${{ steps.package.outputs.current-version }}
+          ignore_empty: true
+
+      # Create Sentry Release For Mobile Admin
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: nitro-system
+          SENTRY_PROJECT: mobile-admin
+        with:
+          environment: ${{ env.env }}
+          sourcemaps: ./dist/apps/m-admin
+          version: ${{ steps.package.outputs.current-version }}
+          ignore_empty: true
+
+      # Create Sentry Release For Backend Api
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: nitro-system
+          SENTRY_PROJECT: backend-api
+        with:
+          environment: ${{ env.env }}
+          sourcemaps: ./dist/apps/b-api
+          version: ${{ steps.package.outputs.current-version }}
+          ignore_empty: true
+
+  # Build and push images to docker hub
+  docker:
+    runs-on: ubuntu-latest
+    needs: semantic-release
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Extract Environments
+      - name: Extract environments
+        shell: bash # cspell:ignore elif
+        run: |
+          branch=${GITHUB_REF#refs/heads/}
+          echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
+
+      # Get Package.json Version
+      - name: Get Package.json Version
+        id: package
+        uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
+
+      # Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Login to DockerHub
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      # Build and push Build
+      - name: Build and push Build
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: nitrosystem/build:${{ steps.package.outputs.current-version }}-${{ env.env }}
+          target: dist
+          build-args: |
+            stage=${{ env.env }}
+
+      # Build and push Backend Api
+      - name: Build and push Backend Api
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: nitrosystem/b_api:${{ steps.package.outputs.current-version }}-${{ env.env }}
+          target: backend
+          build-args: |
+            app=b-api
+            stage=${{ env.env }}
+            version=${{ steps.package.outputs.current-version }}
+
+      # Build and push Admin Web
+      - name: Build and push Admin Web
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: nitrosystem/w_admin:${{ steps.package.outputs.current-version }}-${{ env.env }}
+          target: frontend
+          build-args: |
+            app=w-admin
+            stage=${{ env.env }}
+            version=${{ steps.package.outputs.current-version }}
+
+      # Build and push Admin Mobile
+      - name: Build and push Admin Mobile
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: nitrosystem/m_admin:${{ steps.package.outputs.current-version }}-${{ env.env }}
+          target: frontend
+          build-args: |
+            app=m-admin
+            stage=${{ env.env }}
+            version=${{ steps.package.outputs.current-version }}
+
+  # Deploy shell and docker-compose files and run docker compose in digital ocean
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       # Extract Environments
       - name: Extract environments
         shell: bash # cspell:ignore elif
@@ -21,253 +228,30 @@ jobs:
           echo "DO_KEY=$(if [ $branch = 'staging' ]; then echo ${{ secrets.DO_PRODUCTION_KEY }}; else echo ${{ secrets.DO_STAGING_KEY }}; fi)" >> $GITHUB_ENV
           echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
 
-      # Extract Variables
-      - name: Extract variables
-        shell: bash # cspell:ignore elif
-        run: |
-          echo "${{ env.DO_HOST }}"
-          echo "${{ env.DO_USERNAME }}"
-          echo "${{ env.DO_KEY }}"
-          echo "${{ env.env }}"
+      # Get Package.json Version
+      - name: Get Package.json Version
+        id: package
+        uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
 
-  # # Run Semantic Release only on staging branch
-  # semantic-release:
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/staging'
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+      # Copy shell files to the server
+      - name: Copy shell files to the server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.DO_HOST }}
+          username: ${{ env.DO_USERNAME }}
+          key: ${{ env.DO_KEY }}
+          source: 'deploy.sh,docker-compose.yml'
+          rm: true
+          target: 'nitro'
 
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
-
-  #     # Run Semantic Release
-  #     - name: Semantic Release
-  #       run: |
-  #         npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
-  #         npx semantic-release
-  #       env:
-  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  #         GIT_AUTHOR_NAME: ${{secrets.AUTHOR_NAME}}
-  #         GIT_AUTHOR_EMAIL: ${{secrets.AUTHOR_EMAIL}}
-  #         GIT_COMMITTER_NAME: ${{secrets.AUTHOR_NAME}}
-  #         GIT_COMMITTER_EMAIL: ${{secrets.AUTHOR_EMAIL}}
-
-  #     # Checkout Develop
-  #     - name: Checkout Develop
-  #       uses: actions/checkout@v3
-  #       with:
-  #         ref: develop
-
-  #     # Pull From `Staging` to `Develop`
-  #     - name: Pull From `Staging` to `Develop`
-  #       run: |
-  #         git pull origin staging
-  #         git push
-
-  # # Publish New Release To Sentry
-  # sentry:
-  #   runs-on: ubuntu-latest
-  #   needs: semantic-release
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-
-  #     # Extract Variables
-  #     - name: Extract variables
-  #       shell: bash # cspell:ignore elif
-  #       id: vars
-  #       run: |
-  #         branchName=${GITHUB_REF#refs/heads/}
-  #         if [ $branchName = 'staging' ]; then env='staging'; else env='production'; fi
-  #         echo "::set-output name=env::$(echo $env)"
-
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
-
-  #     # Install Dependencies
-  #     - name: Install dependencies 🔧
-  #       run: |
-  #         npm i -g npm@latest
-  #         npm ci
-
-  #     # Build application
-  #     - name: Run Build
-  #       run: npm run build -- --source-map
-
-  #     # Get Package.json Version
-  #     - name: Get Package.json Version
-  #       id: package-version
-  #       uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
-
-  #     # Create Sentry Release For Web Admin
-  #     - name: Create Sentry release
-  #       uses: getsentry/action-release@v1
-  #       env:
-  #         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  #         SENTRY_ORG: nitro-system
-  #         SENTRY_PROJECT: web-admin
-  #       with:
-  #         environment: ${{ steps.vars.outputs.env }}
-  #         sourcemaps: ./dist/apps/w-admin
-  #         version: ${{ steps.package-version.outputs.current-version }}
-  #         ignore_empty: true
-
-  #     # Create Sentry Release For Mobile Admin
-  #     - name: Create Sentry release
-  #       uses: getsentry/action-release@v1
-  #       env:
-  #         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  #         SENTRY_ORG: nitro-system
-  #         SENTRY_PROJECT: mobile-admin
-  #       with:
-  #         environment: ${{ steps.vars.outputs.env }}
-  #         sourcemaps: ./dist/apps/m-admin
-  #         version: ${{ steps.package-version.outputs.current-version }}
-  #         ignore_empty: true
-
-  #     # Create Sentry Release For Backend Api
-  #     - name: Create Sentry release
-  #       uses: getsentry/action-release@v1
-  #       env:
-  #         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  #         SENTRY_ORG: nitro-system
-  #         SENTRY_PROJECT: backend-api
-  #       with:
-  #         environment: ${{ steps.vars.outputs.env }}
-  #         sourcemaps: ./dist/apps/b-api
-  #         version: ${{ steps.package-version.outputs.current-version }}
-  #         ignore_empty: true
-
-  # # Build and push images to docker hub
-  # docker:
-  #   runs-on: ubuntu-latest
-  #   needs: semantic-release
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-
-  #     # Extract Variables
-  #     - name: Extract variables
-  #       shell: bash # cspell:ignore elif
-  #       id: vars
-  #       run: |
-  #         branchName=${GITHUB_REF#refs/heads/}
-  #         if [ $branchName = 'staging' ]; then env='staging'; else env='production'; fi
-  #         echo "::set-output name=env::$(echo $env)"
-
-  #     # Set up Docker Buildx
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v2
-
-  #     # Login to DockerHub
-  #     - name: Login to DockerHub
-  #       uses: docker/login-action@v2
-  #       with:
-  #         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #         password: ${{ secrets.DOCKER_HUB_TOKEN }}
-
-  #     # Build and push Build
-  #     - name: Build and push Build
-  #       uses: docker/build-push-action@v3
-  #       with:
-  #         push: true
-  #         tags: nitrosystem/${{ steps.vars.outputs.env }}_build:latest
-  #         target: dist
-  #         build-args: |
-  #           stage=${{ steps.vars.outputs.env }}
-
-  #     # Build and push Backend Api
-  #     - name: Build and push Backend Api
-  #       uses: docker/build-push-action@v3
-  #       with:
-  #         push: true
-  #         tags: nitrosystem/${{ steps.vars.outputs.env }}_b_api:latest
-  #         target: backend
-  #         build-args: |
-  #           app=b-api
-  #           stage=${{ steps.vars.outputs.env }}
-
-  #     # Build and push Admin Web
-  #     - name: Build and push Admin Web
-  #       uses: docker/build-push-action@v3
-  #       with:
-  #         push: true
-  #         tags: nitrosystem/${{ steps.vars.outputs.env }}_w_admin:latest
-  #         target: frontend
-  #         build-args: |
-  #           app=w-admin
-  #           stage=${{ steps.vars.outputs.env }}
-
-  #     # Build and push Admin Mobile
-  #     - name: Build and push Admin Mobile
-  #       uses: docker/build-push-action@v3
-  #       with:
-  #         push: true
-  #         tags: nitrosystem/${{ steps.vars.outputs.env }}_m_admin:latest
-  #         target: frontend
-  #         build-args: |
-  #           app=m-admin
-  #           stage=${{ steps.vars.outputs.env }}
-
-  # # Deploy shell and docker-compose files and run docker compose in digital ocean
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: docker
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
-
-  #     # Extract Variables
-  #     - name: Extract variables
-  #       shell: bash # cspell:ignore elif
-  #       id: vars
-  #       run: |
-  #         branchName=${GITHUB_REF#refs/heads/}
-  #         if [ $branchName = 'staging' ]; then env='staging'; else env='production'; fi
-  #         if [ $branchName = 'staging' ]; then env='staging'; else env='production'; fi
-  #         echo "DO_HOST=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_HOST }}'; else '${{ secrets.DO_STAGING_HOST }}'; fi)" >> $GITHUB_ENV
-  #         echo "DO_USERNAME=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_USERNAME }}'; else '${{ secrets.DO_STAGING_USERNAME }}'; fi)" >> $GITHUB_ENV
-  #         echo "DO_KEY=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_KEY }}'; else '${{ secrets.DO_STAGING_KEY }}'; fi)" >> $GITHUB_ENV
-  #         echo "env=$(if [ $branchName = 'staging' ]; then 'staging'; else 'production'; fi)" >> $GITHUB_ENV
-
-  #     # Copy shell files to the server
-  #     - name: Copy shell files to the server
-  #       uses: appleboy/scp-action@master
-  #       with:
-  #         host: ${{ env.DO_HOST }}
-  #         username: ${{ env.DO_USERNAME }}
-  #         key: ${{ env.DO_KEY }}
-  #         source: 'deploy.${{ steps.vars.outputs.env }}.sh,docker-compose.${{ steps.vars.outputs.env }}.yml'
-  #         rm: true
-  #         target: 'nitro'
-
-  #     # Run docker compose with shell file
-  #     - name: Run docker compose with shell file
-  #       uses: appleboy/ssh-action@master # cspell:ignore appleboy
-  #       with:
-  #         host: ${{ env.DO_HOST }}
-  #         username: ${{ env.DO_USERNAME }}
-  #         key: ${{ env.DO_KEY }}
-  #         timeout: '900000s'
-  #         script: |
-  #           cd ./nitro
-  #           ./deploy.${{ steps.vars.outputs.env }}.sh
+      # Run docker compose with shell file
+      - name: Run docker compose with shell file
+        uses: appleboy/ssh-action@master # cspell:ignore appleboy
+        with:
+          host: ${{ env.DO_HOST }}
+          username: ${{ env.DO_USERNAME }}
+          key: ${{ env.DO_KEY }}
+          timeout: '900000s'
+          script: |
+            cd ./nitro
+            ./deploy.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}

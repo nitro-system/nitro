@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  # Backend Api Application
+  b-api:
+    container_name: nitrosystem-b_api_${APP_STAGE}
+    image: nitrosystem/b_api:${APP_VERSION}-${APP_STAGE}
+    ports:
+      - 3000:3000
+
+  # Web Admin Application
+  w-admin:
+    container_name: nitrosystem-w_admin_${APP_STAGE}
+    depends_on:
+      - b-api
+    image: nitrosystem/w_admin_${APP_VERSION}-${APP_STAGE}
+    ports:
+      - 4001:80
+
+  # Mobile Admin Application
+  m-admin:
+    container_name: nitrosystem-m_admin_${APP_STAGE}
+    depends_on:
+      - b-api
+    image: nitrosystem/m_admin_${APP_VERSION}-${APP_STAGE}
+    ports:
+      - 4002:80

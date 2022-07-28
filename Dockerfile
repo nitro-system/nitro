@@ -1,4 +1,5 @@
 ARG stage
+ARG version=latest
 
 # STAGE: Build Application
 FROM node:16.10.0-alpine3.14 AS build
@@ -17,7 +18,7 @@ COPY --from=build /usr/src/app/dist ./
 COPY --from=build /usr/src/app/android ./android
 COPY --from=build /usr/src/app/ios ./ios
 
-FROM nitrosystem/${stage}_build:latest AS distImg
+FROM nitrosystem/build:${version}-${stage} AS distImg
 
 # Stage: Start Frontend Application
 FROM nginx:latest AS frontend
