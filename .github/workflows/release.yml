@@ -27,6 +27,16 @@ jobs:
         # echo "DO_KEY=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_KEY }}'; else '${{ secrets.DO_STAGING_KEY }}'; fi)" >> $GITHUB_ENV
         # echo "env=$(if [ $branchName = 'staging' ]; then 'staging'; else 'production'; fi)" >> $GITHUB_ENV
 
+      # Extract Variables
+      - name: Extract variables
+        shell: bash # cspell:ignore elif
+        id: vars
+        run: |
+          echo "${{ env.DO_HOST }}"
+          echo ${{ env.DO_HOST }}
+          echo "${env.DO_HOST}"
+          echo ${env.DO_HOST}
+
   # # Run Semantic Release only on staging branch
   # semantic-release:
   #   runs-on: ubuntu-latest
