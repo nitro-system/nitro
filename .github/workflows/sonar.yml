@@ -3,9 +3,9 @@ name: Sonar Cloud
 
 on:
   push:
-    branches: [ss]
+    branches: [develop, master, staging]
   pull_request:
-    branches: [ss]
+    branches: [develop, master, staging]
 
 jobs:
   sonar:
