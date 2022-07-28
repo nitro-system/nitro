@@ -143,6 +143,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Double Check The Latest Commit Pulled
+      - name: Pull From origin
+        run: |
+          git pull origin
+
       # Extract Environments
       - name: Extract environments
         shell: bash # cspell:ignore elif
@@ -222,6 +227,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      # Double Check The Latest Commit Pulled
+      - name: Pull From origin
+        run: |
+          git pull origin
 
       # Extract Environments
       - name: Extract environments
