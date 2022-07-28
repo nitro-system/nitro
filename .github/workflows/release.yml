@@ -17,7 +17,8 @@ jobs:
         id: vars
         run: |
           branchName=${GITHUB_REF#refs/heads/}
-          DO_PRODUCTION_HOST=${{ secrets.DO_PRODUCTION_HOST }}Hosting
+          DO_PRODUCTION_HOST=${{ secrets.DO_PRODUCTION_HOST }}
+          echo "DO_HOST=$(echo 'hello')" >> $GITHUB_ENV
           echo "$branchName"
           echo "$DO_PRODUCTION_HOST"
           echo "${{ env.DO_HOST }}"
