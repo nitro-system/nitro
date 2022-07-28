@@ -6,13 +6,6 @@
     ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
     ["@semantic-release/exec", { "prepareCmd": "npx prettier . --write" }],
     ["@semantic-release/npm", { "npmPublish": false }],
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["CHANGELOG.md", "package.json"],
-        "message": "docs(release): ${nextRelease.version} [skip ci]"
-      }
-    ],
     "@semantic-release/github"
   ]
 }
