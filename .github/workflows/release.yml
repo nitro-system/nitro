@@ -223,9 +223,9 @@ jobs:
         shell: bash # cspell:ignore elif
         run: |
           branch=${GITHUB_REF#refs/heads/}
-          echo "DO_HOST=$(if [ $branch = 'staging' ]; then echo 'DO_PRODUCTION_HOST'; else echo 'DO_STAGING_HOST'; fi)" >> $GITHUB_ENV
-          echo "DO_USERNAME=$(if [ $branch = 'staging' ]; then echo 'DO_PRODUCTION_USERNAME'; else echo 'DO_STAGING_USERNAME'; fi)" >> $GITHUB_ENV
-          echo "DO_KEY=$(if [ $branch = 'staging' ]; then echo 'DO_PRODUCTION_KEY'; else echo 'DO_STAGING_KEY'; fi)" >> $GITHUB_ENV
+          echo "DO_HOST=$(if [ $branch = 'staging' ]; then echo 'DO_STAGING_HOST'; else echo 'DO_PRODUCTION_HOST'; fi)" >> $GITHUB_ENV
+          echo "DO_USERNAME=$(if [ $branch = 'staging' ]; then echo 'DO_STAGING_USERNAME'; else echo 'DO_PRODUCTION_USERNAME'; fi)" >> $GITHUB_ENV
+          echo "DO_KEY=$(if [ $branch = 'staging' ]; then echo 'DO_STAGING_KEY'; else echo 'DO_PRODUCTION_KEY'; fi)" >> $GITHUB_ENV
           echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
 
       # Get Package.json Version
