@@ -16,12 +16,11 @@ jobs:
         shell: bash # cspell:ignore elif
         id: vars
         run: |
-          branchName=${GITHUB_REF#refs/heads/}
-          DO_PRODUCTION_HOST=${{ secrets.DO_PRODUCTION_HOST }}
-          echo "DO_HOST=$(if [ $branchName = 'staging' ]; then echo ${{ secrets.DO_PRODUCTION_HOST }}; else echo ${{ secrets.DO_STAGING_HOST }}; fi)" >> $GITHUB_ENV
-          echo "DO_USERNAME=$(if [ $branchName = 'staging' ]; then echo ${{ secrets.DO_PRODUCTION_USERNAME }}; else echo ${{ secrets.DO_STAGING_USERNAME }}; fi)" >> $GITHUB_ENV
-          echo "DO_KEY=$(if [ $branchName = 'staging' ]; then echo ${{ secrets.DO_PRODUCTION_KEY }}; else echo ${{ secrets.DO_STAGING_KEY }}; fi)" >> $GITHUB_ENV
-          echo "env=$(if [ $branchName = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
+          isStaging=${GITHUB_REF#refs/heads/} === 'staging'
+          echo "DO_HOST=$(if [ isStaging ]; then echo ${{ secrets.DO_PRODUCTION_HOST }}; else echo ${{ secrets.DO_STAGING_HOST }}; fi)" >> $GITHUB_ENV
+          echo "DO_USERNAME=$(if [ isStaging ]; then echo ${{ secrets.DO_PRODUCTION_USERNAME }}; else echo ${{ secrets.DO_STAGING_USERNAME }}; fi)" >> $GITHUB_ENV
+          echo "DO_KEY=$(if [ isStaging ]; then echo ${{ secrets.DO_PRODUCTION_KEY }}; else echo ${{ secrets.DO_STAGING_KEY }}; fi)" >> $GITHUB_ENV
+          echo "env=$(if [ isStaging ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
 
       # Extract Variables
       - name: Extract variables
