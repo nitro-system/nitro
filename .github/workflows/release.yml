@@ -244,9 +244,9 @@ jobs:
       - name: Copy shell files to the server
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets['DO_'env.ENV'_HOST'] }}
-          username: ${{  secrets['DO_'env.ENV'_USERNAME']  }}
-          key: ${{  secrets['DO_'env.ENV'_KEY']  }}
+          host: ${{ secrets['DO_'{{env.ENV}}'_HOST'] }}
+          username: ${{  secrets['DO_'{{env.ENV}}'_USERNAME']  }}
+          key: ${{  secrets['DO_'{{env.ENV}}'_KEY']  }}
           source: 'deploy.sh,docker-compose.yml'
           rm: true
           target: 'nitro'
@@ -255,9 +255,9 @@ jobs:
       - name: Run docker compose with shell file
         uses: appleboy/ssh-action@master # cspell:ignore appleboy
         with:
-          host: ${{ secrets['DO_'env.ENV'_HOST'] }}
-          username: ${{  secrets['DO_'env.ENV'_USERNAME']  }}
-          key: ${{  secrets['DO_'env.ENV'_KEY']  }}
+          host: ${{ secrets['DO_'{{env.ENV}}'_HOST'] }}
+          username: ${{  secrets['DO_'{{env.ENV}}'_USERNAME']  }}
+          key: ${{  secrets['DO_'{{env.ENV}}'_KEY']  }}
           timeout: '900000s'
           script: |
             cd ./nitro
