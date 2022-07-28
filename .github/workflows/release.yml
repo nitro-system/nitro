@@ -33,8 +33,6 @@ jobs:
         run: |
           echo "${{ env.DO_HOST }}"
           echo ${{ env.DO_HOST }}
-          echo "${env.DO_HOST}"
-          echo ${env.DO_HOST}
 
   # # Run Semantic Release only on staging branch
   # semantic-release:
