@@ -18,10 +18,9 @@ jobs:
         run: |
           branchName=${GITHUB_REF#refs/heads/}
           DO_PRODUCTION_HOST=${{ secrets.DO_PRODUCTION_HOST }}
-          echo "DO_HOST=$(echo 'hello')" >> $GITHUB_ENV
+          echo "DO_HOST=$(if [ $branchName = 'staging' ]; then echo 'hello'; else echo 'not_welcome'; fi)" >> $GITHUB_ENV
           echo "$branchName"
           echo "$DO_PRODUCTION_HOST"
-          echo "${{ env.DO_HOST }}"
         # echo "DO_HOST=$(if [ $branchName = 'staging' ]; then ${{ secrets.DO_PRODUCTION_HOST }}; else ${{ secrets.DO_STAGING_HOST }}; fi)" >> $GITHUB_ENV
         # echo "DO_USERNAME=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_USERNAME }}'; else '${{ secrets.DO_STAGING_USERNAME }}'; fi)" >> $GITHUB_ENV
         # echo "DO_KEY=$(if [ $branchName = 'staging' ]; then '${{ secrets.DO_PRODUCTION_KEY }}'; else '${{ secrets.DO_STAGING_KEY }}'; fi)" >> $GITHUB_ENV
