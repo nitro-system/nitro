@@ -12,7 +12,7 @@ services:
     container_name: nitrosystem-w_admin_${APP_STAGE}
     depends_on:
       - b-api
-    image: nitrosystem/w_admin_${APP_VERSION}-${APP_STAGE}
+    image: nitrosystem/w_admin:${APP_VERSION}-${APP_STAGE}
     ports:
       - 4001:80
 
@@ -21,6 +21,6 @@ services:
     container_name: nitrosystem-m_admin_${APP_STAGE}
     depends_on:
       - b-api
-    image: nitrosystem/m_admin_${APP_VERSION}-${APP_STAGE}
+    image: nitrosystem/m_admin:${APP_VERSION}-${APP_STAGE}
     ports:
       - 4002:80
