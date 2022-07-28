@@ -1,3 +1,13 @@
+## [1.1.8](https://github.com/nitro-system/nitro/compare/v1.1.7...v1.1.8) (2022-07-28)
+
+### Bug Fixes
+
+- **lint-stage:** 🐛 remove npx from lint-stage commands ([aac1660](https://github.com/nitro-system/nitro/commit/aac16606dd7e9f3757e37bbe5730510301b3905b))
+
+### Performance Improvements
+
+- **w-admin:** ⚡ improve backendUrl varaible with using `backendApiPort` from workspace ([54ac25c](https://github.com/nitro-system/nitro/commit/54ac25c3508e71721cf9267c1f87ce515a47e071))
+
 ## [1.1.7](https://github.com/nitro-system/nitro/compare/v1.1.6...v1.1.7) (2022-07-28)
 
 ### Bug Fixes
