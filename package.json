@@ -19,10 +19,7 @@
     "check:test": "nx run-many --target=test --all",
     "check:e2e": "nx run-many --target=e2e --all --parallel=false",
     "check:lint": "nx run-many --target=lint --all",
-    "check:cspell": "cspell",
-    "check:format": "nx format:check && prettier . --check",
-    "check:style": "stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"",
-    "test": "npm run check:test && npm run check:e2e && npm run check:lint && npm run check:style && npm run check:cspell && npm run check:format"
+    "test": "npm run check:test && npm run check:e2e && npm run check:lint"
   },
   "private": true,
   "dependencies": {
