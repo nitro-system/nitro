@@ -1,3 +1,9 @@
+## [1.1.10](https://github.com/nitro-system/nitro/compare/v1.1.9...v1.1.10) (2022-07-29)
+
+### Bug Fixes
+
+- **github:** ⚡️ improve git hooks by check commit message spelling ([1ffb68f](https://github.com/nitro-system/nitro/commit/1ffb68fba23c9930ec3f79d095b18d918109f0ea))
+
 ## [1.1.9](https://github.com/nitro-system/nitro/compare/v1.1.8...v1.1.9) (2022-07-28)
 
 ### Bug Fixes
