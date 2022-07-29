@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 # cspell:ignore buildx getsentry sourcemaps gonuit
 
-name: Publish a new release
+name: Deploy the new release
 
 # Only trigger, when the build workflow succeeded
 on:
