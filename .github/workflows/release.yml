@@ -178,14 +178,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ env.branch }}
 
-      # Extract Environments
-      - name: Extract environments
-        shell: bash # cspell:ignore elif
-        run: |
-          git branch -a
-          ls
-          cat package.json
-
       # Get Package.json Version
       - name: Get Package.json Version
         id: package
