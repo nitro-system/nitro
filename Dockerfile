@@ -6,7 +6,9 @@ FROM node:16.10.0-alpine3.14 AS build
 ARG stage
 WORKDIR /usr/src/app
 COPY . .
+RUN git -v
 RUN ls
+RUN cat CHANGELOG.md
 RUN cat ./package.json
 # RUN npm i -g npm@latest
 # RUN npm i
