@@ -3,9 +3,9 @@ name: Sonar Cloud
 
 on:
   push:
-    branches: [master, staging, develop]
+    branches: [develop]
   pull_request:
-    branches: [master, staging, develop]
+    branches: [develop]
 
 jobs:
   sonar:
@@ -18,19 +18,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Get Package.json Version
-      - name: Get Package.json Version
-        id: package
-        uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
-
       # Extract Environments
       - name: Extract environments
         shell: bash # cspell:ignore elif
         run: |
-          branch=${GITHUB_REF#refs/heads/}
-          version="latest"
-          if [ $branch != "develop" ]; then version=${{ steps.package.outputs.current-version }}; fi
-          sed -i -e 's/$APP_VERSION/'"$version"'/g' "./sonar-project.properties"
+          sed -i -e 's/$APP_VERSION/latest/g' "./sonar-project.properties"
 
       # Run Sonarqube
       - name: SonarCloud Scan
