@@ -194,6 +194,12 @@ jobs:
         id: package
         uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
 
+      # Extract Environments
+      - name: Echo Package.json
+        shell: bash # cspell:ignore elif
+        run: |
+          echo ${{ steps.package.outputs.current-version }}
+
       # Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -281,6 +287,12 @@ jobs:
       - name: Get Package.json Version
         id: package
         uses: martinbeentjes/npm-get-version-action@main # cspell:ignore martinbeentjes
+
+      # Extract Environments
+      - name: Echo Package.json
+        shell: bash # cspell:ignore elif
+        run: |
+          echo ${{ steps.package.outputs.current-version }}
 
       # Copy shell files to the server
       - name: Copy shell files to the server
