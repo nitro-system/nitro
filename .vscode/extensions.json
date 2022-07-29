@@ -14,7 +14,6 @@
     "eamodio.gitlens",
     "ecmel.vscode-html-css",
     "editorconfig.editorconfig",
-    "eg2.vscode-npm-script",
     "esbenp.prettier-vscode",
     "foxundermoon.shell-format",
     "github.vscode-pull-request-github",
@@ -59,7 +58,7 @@
     "wix.vscode-import-cost",
     "zhuangtongfa.material-theme",
     "zignd.html-css-class-completion",
-    "VisualStudioExptTeam.vscodeintellicode",
-    "streetsidesoftware.code-spell-checker-arabic"
+    "streetsidesoftware.code-spell-checker-arabic",
+    "VisualStudioExptTeam.vscodeintellicode"
   ]
 }
