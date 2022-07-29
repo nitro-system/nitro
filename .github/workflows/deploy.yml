@@ -7,7 +7,7 @@ on:
   push:
     branches: [master]
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   # Publish Sonar Release
