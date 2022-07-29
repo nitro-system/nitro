@@ -194,6 +194,9 @@ jobs:
       # Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        id: buildx
+        with:
+          install: true
 
       # Login to DockerHub
       - name: Login to DockerHub
@@ -202,51 +205,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      # Build and push Build
-      - name: Build and push Build
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: nitrosystem/build:${{ steps.package.outputs.current-version }}-${{ env.env }}
-          target: dist
-          build-args: |
-            stage=${{ env.env }}
-
-      # Build and push Backend Api
-      - name: Build and push Backend Api
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: nitrosystem/b_api:${{ steps.package.outputs.current-version }}-${{ env.env }}
-          target: backend
-          build-args: |
-            app=b-api
-            stage=${{ env.env }}
-            version=${{ steps.package.outputs.current-version }}
-
-      # Build and push Admin Web
-      - name: Build and push Admin Web
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: nitrosystem/w_admin:${{ steps.package.outputs.current-version }}-${{ env.env }}
-          target: frontend
-          build-args: |
-            app=w-admin
-            stage=${{ env.env }}
-            version=${{ steps.package.outputs.current-version }}
-
-      # Build and push Admin Mobile
-      - name: Build and push Admin Mobile
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: nitrosystem/m_admin:${{ steps.package.outputs.current-version }}-${{ env.env }}
-          target: frontend
-          build-args: |
-            app=m-admin
-            stage=${{ env.env }}
-            version=${{ steps.package.outputs.current-version }}
+      # Extract Environments
+      - name: Extract environments
+        shell: bash
+        run: |
+          ./build.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}
 
   # Deploy shell and docker-compose files and run docker compose in digital ocean
   deploy:
