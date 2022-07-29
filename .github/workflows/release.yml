@@ -59,11 +59,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Double Check The Latest Commit Pulled
-      - name: Pull From origin
-        run: |
-          git pull origin
-
       # Get Package.json Version
       - name: Get Package.json Version
         id: package
