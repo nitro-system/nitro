@@ -3,7 +3,10 @@
 
 name: Deploy latest release
 
-on: release
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   # Publish Sonar Release
