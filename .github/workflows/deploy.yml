@@ -4,8 +4,6 @@
 name: Deploy latest release
 
 on:
-  push:
-    branches: [master]
   release:
     types: [created]
 
