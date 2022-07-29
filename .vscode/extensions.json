@@ -59,6 +59,7 @@
     "wix.vscode-import-cost",
     "zhuangtongfa.material-theme",
     "zignd.html-css-class-completion",
-    "VisualStudioExptTeam.vscodeintellicode"
+    "VisualStudioExptTeam.vscodeintellicode",
+    "streetsidesoftware.code-spell-checker-arabic"
   ]
 }
