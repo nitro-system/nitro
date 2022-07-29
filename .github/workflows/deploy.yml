@@ -3,10 +3,12 @@
 
 name: Publish a new release
 
+# Only trigger, when the build workflow succeeded
 on:
-  push:
-    tags:
-      - '**'
+  workflow_run:
+    workflows: ['Publish a new release']
+    types:
+      - completed
 
 jobs:
   # Publish Sonar Release
