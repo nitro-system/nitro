@@ -1,9 +1,6 @@
 export APP_VERSION=$1
 export APP_STAGE=$2
 
-ls
-cat package.json
-
 # 1- Build AND Push Apps For staging
 docker build --push --tag nitrosystem/build:$APP_VERSION-$APP_STAGE . --target=dist --build-arg stage=$APP_STAGE
 # docker push nitrosystem/build:$APP_VERSION-$APP_STAGE

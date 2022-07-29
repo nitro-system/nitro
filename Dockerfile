@@ -6,7 +6,6 @@ FROM node:16.10.0-alpine3.14 AS build
 ARG stage
 WORKDIR /usr/src/app
 COPY . .
-RUN cat package.json
 RUN npm i -g npm@latest
 RUN npm i
 RUN npx nx run-many --target=build --all --configuration=${stage} --parallel=false
