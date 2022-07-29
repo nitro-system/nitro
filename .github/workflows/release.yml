@@ -11,7 +11,6 @@ jobs:
   # Run Semantic Release only on staging branch
   semantic-release:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/staging'
     steps:
       # Get checkout
       - name: Checkout
@@ -21,12 +20,14 @@ jobs:
 
       # Install Node js
       - name: Use Node.js
+        if: github.ref == 'refs/heads/staging'
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
 
       # Run Semantic Release
       - name: Semantic Release
+        if: github.ref == 'refs/heads/staging'
         run: |
           npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
           npx semantic-release
@@ -39,12 +40,14 @@ jobs:
 
       # Checkout Develop
       - name: Checkout Develop
+        if: github.ref == 'refs/heads/staging'
         uses: actions/checkout@v3
         with:
           ref: develop
 
       # Pull From `Staging` to `Develop`
       - name: Pull From `Staging` to `Develop`
+        if: github.ref == 'refs/heads/staging'
         run: |
           git pull origin staging
           git push
