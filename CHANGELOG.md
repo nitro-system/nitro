@@ -1,3 +1,10 @@
+## [1.1.27](https://github.com/nitro-system/nitro/compare/v1.1.26...v1.1.27) (2022-07-29)
+
+### Bug Fixes
+
+- **github:** 💚 fix ci commands and docker build ([94ed417](https://github.com/nitro-system/nitro/commit/94ed4172e17292ec66d903bb0de2f66b5776f7e2))
+- **github:** 💚 fix ci commands and docker build ([d9eeb97](https://github.com/nitro-system/nitro/commit/d9eeb9703f22ecedbc31d490fb7214ac4f00d31b))
+
 ## [1.1.26](https://github.com/nitro-system/nitro/compare/v1.1.25...v1.1.26) (2022-07-29)
 
 ### Bug Fixes
