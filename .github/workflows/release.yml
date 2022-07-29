@@ -5,12 +5,13 @@ name: Publish a new release
 
 on:
   push:
-    branches: [staging]
+    branches: [staging, master]
 
 jobs:
   # Run Semantic Release only on staging branch
   semantic-release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging'
     steps:
       # Get checkout
       - name: Checkout
@@ -30,11 +31,11 @@ jobs:
           npm i -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec
           npx semantic-release
         env:
-          GITHUB_TOKEN: ${{secrets.MY_GITHUB_TOKEN}}
-          GIT_AUTHOR_NAME: Omar Elsayed
-          GIT_AUTHOR_EMAIL: omar-alsayed@syscodeia.ae
-          GIT_COMMITTER_NAME: Omar Elsayed
-          GIT_COMMITTER_EMAIL: omar-alsayed@syscodeia.ae
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GIT_AUTHOR_NAME: github-actions
+          GIT_AUTHOR_EMAIL: github-actions@github.com
+          GIT_COMMITTER_NAME: github-actions
+          GIT_COMMITTER_EMAIL: github-actions@github.com
 
       # Checkout Develop
       - name: Checkout Develop
