@@ -198,6 +198,9 @@ jobs:
       - name: Echo Package.json
         shell: bash # cspell:ignore elif
         run: |
+          ls
+          cat CHANGELOG.md
+          cat ./package.json
           echo ${{ steps.package.outputs.current-version }}
 
       # Set up Docker Buildx
@@ -215,6 +218,10 @@ jobs:
       - name: Pull From origin
         run: |
           git pull origin
+          ls
+          cat CHANGELOG.md
+          cat ./package.json
+          echo ${{ steps.package.outputs.current-version }}
 
       # Build and push Build
       - name: Build and push Build
