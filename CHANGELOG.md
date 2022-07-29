@@ -1,3 +1,9 @@
+## [1.1.11](https://github.com/nitro-system/nitro/compare/v1.1.10...v1.1.11) (2022-07-29)
+
+### Bug Fixes
+
+- **sonar:** 💚 improve and fix ci for sonar publish ([a792d55](https://github.com/nitro-system/nitro/commit/a792d55e7af274743115c374f19a7bdf92b882df))
+
 ## [1.1.10](https://github.com/nitro-system/nitro/compare/v1.1.9...v1.1.10) (2022-07-29)
 
 ### Bug Fixes
