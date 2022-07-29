@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/nitro-system/nitro/compare/v1.2.0...v1.3.0) (2022-07-29)
+
+### Features
+
+- **ci:** ➕ setup config to publish to master with ci/cd ([8ac2b9e](https://github.com/nitro-system/nitro/commit/8ac2b9eb297ef817c7d7054e925dc789f592ee91))
+
 # [1.2.0](https://github.com/nitro-system/nitro/compare/v1.1.46...v1.2.0) (2022-07-29)
 
 ### Features
