@@ -68,6 +68,7 @@ jobs:
       - name: Extract environments
         shell: bash # cspell:ignore elif
         run: |
+          git -v
           ls
           cat package.json
           echo ${{ steps.package.outputs.current-version }}
