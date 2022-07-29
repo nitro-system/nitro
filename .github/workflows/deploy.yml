@@ -3,9 +3,7 @@
 
 name: Deploy latest release
 
-on:
-  release:
-    types: [created]
+on: release
 
 jobs:
   # Publish Sonar Release
