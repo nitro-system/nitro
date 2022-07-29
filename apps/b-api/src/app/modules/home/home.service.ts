@@ -10,7 +10,7 @@ export class HomeService {
     return {
       environment: environment.name,
       production: environment.production,
-      version: environment.version.full,
+      version: `${environment.version.full}-updated`,
     };
   }
 
