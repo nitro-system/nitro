@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/nitro-system/nitro/compare/v1.1.46...v1.2.0) (2022-07-29)
+
+### Features
+
+- **ci:** ➕ add new package `sort-package-json` to sort package.json file ([71a2873](https://github.com/nitro-system/nitro/commit/71a2873fc9196ea7a5283a92e7b90663b70fe451))
+
 ## [1.1.46](https://github.com/nitro-system/nitro/compare/v1.1.45...v1.1.46) (2022-07-29)
 
 ### Bug Fixes
