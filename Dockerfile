@@ -6,6 +6,8 @@ FROM node:16.10.0-alpine3.14 AS build
 ARG stage
 WORKDIR /usr/src/app
 COPY . .
+COPY package*.json .
+COPY CHANGELOG.md .
 RUN ls
 RUN cat CHANGELOG.md
 RUN cat ./package.json
