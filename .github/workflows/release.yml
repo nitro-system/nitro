@@ -206,8 +206,8 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      # Extract Environments
-      - name: Extract environments
+      # Build and push docker images
+      - name: Build and push docker images
         shell: bash
         run: |
           ./build.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}
