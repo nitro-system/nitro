@@ -1,3 +1,9 @@
+## [1.1.12](https://github.com/nitro-system/nitro/compare/v1.1.11...v1.1.12) (2022-07-29)
+
+### Bug Fixes
+
+- **github:** 🧪 testing staging server for updates ([ff9bb92](https://github.com/nitro-system/nitro/commit/ff9bb9261e8f67f31094ed2ec45bd72715629af4))
+
 ## [1.1.11](https://github.com/nitro-system/nitro/compare/v1.1.10...v1.1.11) (2022-07-29)
 
 ### Bug Fixes
