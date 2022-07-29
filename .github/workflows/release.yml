@@ -89,7 +89,7 @@ jobs:
         run: |
           branch=${GITHUB_REF#refs/heads/}
           echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
-          echo "branch=branch" >> $GITHUB_ENV
+          echo "branch=$branch" >> $GITHUB_ENV
 
       # Get checkout
       - name: Checkout
@@ -169,7 +169,7 @@ jobs:
         run: |
           branch=${GITHUB_REF#refs/heads/}
           echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
-          echo "branch=branch" >> $GITHUB_ENV
+          echo "branch=$branch" >> $GITHUB_ENV
 
       # Get checkout
       - name: Checkout
@@ -262,7 +262,7 @@ jobs:
           echo "DO_USERNAME=$(if [ $branch = 'staging' ]; then echo 'DO_USERNAME_STAGING'; else echo 'DO_USERNAME_PRODUCTION'; fi)" >> $GITHUB_ENV
           echo "DO_KEY=$(if [ $branch = 'staging' ]; then echo 'DO_KEY_STAGING'; else echo 'DO_KEY_PRODUCTION'; fi)" >> $GITHUB_ENV
           echo "env=$(if [ $branch = 'staging' ]; then echo 'staging'; else echo 'production'; fi)" >> $GITHUB_ENV
-          echo "branch=branch" >> $GITHUB_ENV
+          echo "branch=$branch" >> $GITHUB_ENV
 
       # Get checkout
       - name: Checkout
