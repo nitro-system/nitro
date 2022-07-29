@@ -36,17 +36,17 @@ jobs:
           GIT_COMMITTER_NAME: Omar Elsayed
           GIT_COMMITTER_EMAIL: omar-alsayed@syscodeia.ae
 
-      # # Checkout Develop
-      # - name: Checkout Develop
-      #   uses: actions/checkout@v3
-      #   with:
-      #     ref: develop
+      # Checkout Develop
+      - name: Checkout Develop
+        uses: actions/checkout@v3
+        with:
+          ref: develop
 
-      # # Pull From `Staging` to `Develop`
-      # - name: Pull From `Staging` to `Develop`
-      #   run: |
-      #     git pull origin staging
-      #     git push
+      # Pull From `Staging` to `Develop`
+      - name: Pull From `Staging` to `Develop`
+        run: |
+          git pull origin staging
+          git push
 
   # Publish Sonar Release
   sonar:
@@ -69,6 +69,7 @@ jobs:
         shell: bash # cspell:ignore elif
         run: |
           git -v
+          git branch --show-current
           ls
           cat package.json
           echo ${{ steps.package.outputs.current-version }}
