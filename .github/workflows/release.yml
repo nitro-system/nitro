@@ -292,6 +292,8 @@ jobs:
       - name: Echo Package.json
         shell: bash # cspell:ignore elif
         run: |
+          ls
+          cat package.json
           echo ${{ steps.package.outputs.current-version }}
 
       # Copy shell files to the server
