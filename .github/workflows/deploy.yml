@@ -119,7 +119,6 @@ jobs:
   # Build and push images to docker hub
   docker:
     runs-on: ubuntu-latest
-    needs: semantic-release
     steps:
       # Get checkout
       - name: Checkout
