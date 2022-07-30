@@ -4,34 +4,43 @@ services:
   b-api:
     container_name: nitrosystem-b_api_${APP_STAGE}
     image: nitrosystem/b_api:${APP_VERSION}-${APP_STAGE}
-    ports:
-      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - nitro
 
   # Web Admin Application
   w-admin:
     container_name: nitrosystem-w_admin_${APP_STAGE}
+    image: nitrosystem/w_admin:${APP_VERSION}-${APP_STAGE}
+    restart: unless-stopped
     depends_on:
       - b-api
-    image: nitrosystem/w_admin:${APP_VERSION}-${APP_STAGE}
-    ports:
-      - 4001:80
+    networks:
+      - nitro
 
   # Mobile Admin Application
   m-admin:
     container_name: nitrosystem-m_admin_${APP_STAGE}
+    image: nitrosystem/m_admin:${APP_VERSION}-${APP_STAGE}
+    restart: unless-stopped
     depends_on:
       - b-api
-    image: nitrosystem/m_admin:${APP_VERSION}-${APP_STAGE}
-    ports:
-      - 4002:80
+    networks:
+      - nitro
 
   # Reverse Proxy
   reverse-proxy:
     container_name: nitrosystem-reverse_proxy_${APP_STAGE}
+    image: nitrosystem/reverse_proxy:${APP_VERSION}-${APP_STAGE}
+    restart: unless-stopped
     depends_on:
       - b-api
       - w-admin
       - m-admin
-    image: nitrosystem/reverse_proxy:${APP_VERSION}-${APP_STAGE}
     ports:
       - 80:80
+    networks:
+      - nitro
+
+networks:
+  nitro:

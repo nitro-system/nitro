@@ -18,7 +18,7 @@ COPY --from=build /usr/src/app/dist ./
 COPY --from=build /usr/src/app/android ./android
 COPY --from=build /usr/src/app/ios ./ios
 
-FROM nitrosystem/build:${version}-${stage} AS distImg
+FROM nitrosystem/build:${version}-${stage} AS dist_img
 
 # Stage: Start Frontend Application
 FROM nginx:latest AS frontend
@@ -27,7 +27,7 @@ ENV PORT=80
 COPY ./nginx.conf  /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=distImg /usr/src/app/apps/${app} .
+COPY --from=dist_img /usr/src/app/apps/${app} .
 CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
 EXPOSE ${PORT}
 
@@ -36,14 +36,14 @@ FROM node:16.10.0-alpine3.14 AS backend
 ARG app
 ENV PORT=3000
 WORKDIR /usr/src/app
-COPY --from=distImg /usr/src/app/apps/${app} .
+COPY --from=dist_img /usr/src/app/apps/${app} .
 RUN npm i -g npm@latest
 RUN npm install --omit=dev
 CMD node main --bind 0.0.0.0:${PORT}
 EXPOSE ${PORT}
 
-# Stage: Start Frontend Application
-FROM nginx:latest AS reverse-proxy
+# Stage: Start Reverse proxy
+FROM nginx:latest AS reverse_proxy
 ARG stage
 ENV STAGE=${stage}
 COPY ./nginx.reverse-proxy.conf  /etc/nginx/conf.d/default.conf
