@@ -46,4 +46,5 @@ EXPOSE ${PORT}
 FROM nginx:latest AS reverse_proxy
 ARG stage
 ENV STAGE=${stage}
-CMD sed -i -e 's/$STAGE/'"$STAGE"'/g' /etc/nginx/conf.d/default.conf
+COPY ./server/nginx/reverse-proxy/conf/  /etc/nginx/conf.d/
+RUN sed -i -e 's/$STAGE/'"$STAGE"'/g' /etc/nginx/conf.d/default.conf
