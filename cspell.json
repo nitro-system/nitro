@@ -44,6 +44,6 @@
     "android",
     "ios",
     ".scannerwork",
-    "nginx.conf"
+    "server/**/default.conf"
   ]
 }
