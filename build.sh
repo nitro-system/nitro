@@ -14,4 +14,4 @@ docker build --push --tag nitrosystem/w_admin:$APP_VERSION-$APP_STAGE . --target
 docker build --push --tag nitrosystem/m_admin:$APP_VERSION-$APP_STAGE . --target=frontend --build-arg app=m-admin --build-arg stage=$APP_STAGE --build-arg version=$APP_VERSION
 
 # 5- Build and push Reverse Proxy Image
-docker build --push --tag nitrosystem/reverse_proxy:$APP_VERSION-$APP_STAGE . --target=reverse-proxy --build-arg stage=$APP_STAGE --build-arg
+docker build --push --tag nitrosystem/reverse_proxy:$APP_VERSION-$APP_STAGE . --target=reverse-proxy --build-arg stage=$APP_STAGE
