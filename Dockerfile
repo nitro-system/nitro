@@ -24,7 +24,7 @@ FROM nitrosystem/build:${version}-${stage} AS dist_img
 FROM nginx:latest AS frontend
 ARG app
 ENV PORT=80
-COPY ./server/nginx/frontend/conf/  /etc/nginx/conf.d/
+COPY ./nginx.frontend.conf /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=dist_img /usr/src/app/apps/${app} .
@@ -46,5 +46,5 @@ EXPOSE ${PORT}
 FROM nginx:latest AS reverse_proxy
 ARG stage
 ENV STAGE=${stage}
-COPY ./server/nginx/reverse-proxy/conf/  /etc/nginx/conf.d/
+COPY ./nginx.reverse-proxy.conf /etc/nginx/conf.d/default.conf
 RUN sed -i -e 's/$STAGE/'"$STAGE"'/g' /etc/nginx/conf.d/default.conf
