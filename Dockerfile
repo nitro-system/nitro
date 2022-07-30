@@ -45,8 +45,6 @@ EXPOSE ${PORT}
 # Stage: Start Frontend Application
 FROM nginx:latest AS reverse-proxy
 ARG stage
-ENV PORT=80
 ENV STAGE=${stage}
 COPY ./nginx.reverse-proxy.conf  /etc/nginx/conf.d/default.conf
-CMD sed -i -e 's/$STAGE/'"$STAGE"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
-EXPOSE ${PORT}
+RUN sed -i -e 's/$STAGE/'"$STAGE"'/g' /etc/nginx/conf.d/default.conf
