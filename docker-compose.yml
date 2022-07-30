@@ -39,7 +39,7 @@ services:
     volumes:
       - ./certbot/conf/:/etc/letsencrypt/:rw
       - ./certbot/www/:/var/www/certbot/:rw
-    # command: certonly --webroot -w /var/www/certbot --email challengeromar97@gmail.com --agree-tos -d www.web-admin.staging.nitro.ng-omar.com -d web-admin.staging.nitro.ng-omar.com -d mobile-admin.staging.nitro.ng-omar.com -d www.mobile-admin.staging.nitro.ng-omar.com -d api.staging.nitro.ng-omar.com -d www.api.staging.nitro.ng-omar.com
+    command: certonly --webroot -w /var/www/certbot --email challengeromar97@gmail.com --agree-tos -d www.web-admin.staging.nitro.ng-omar.com -d web-admin.staging.nitro.ng-omar.com -d mobile-admin.staging.nitro.ng-omar.com -d www.mobile-admin.staging.nitro.ng-omar.com -d api.staging.nitro.ng-omar.com -d www.api.staging.nitro.ng-omar.com
     networks:
       - nitro
 
