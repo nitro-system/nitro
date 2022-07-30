@@ -1,3 +1,9 @@
+## [1.4.2](https://github.com/nitro-system/nitro/compare/v1.4.1...v1.4.2) (2022-07-30)
+
+### Bug Fixes
+
+- **docker:** 🚑️ fix build docker reverse proxy image ([3934946](https://github.com/nitro-system/nitro/commit/3934946e5c4d055ff3427efb3cf0ca5e02973fe7))
+
 ## [1.4.1](https://github.com/nitro-system/nitro/compare/v1.4.0...v1.4.1) (2022-07-30)
 
 ### Bug Fixes
