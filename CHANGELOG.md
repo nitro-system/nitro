@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/nitro-system/nitro/compare/v1.4.6...v1.4.7) (2022-07-31)
+
+### Bug Fixes
+
+- **docker:** 🚑️ fix build docker reverse proxy image ([6b0ee96](https://github.com/nitro-system/nitro/commit/6b0ee964a9a69c242c7e634afe4da8342be7d1d8))
+- **frontend:** 🔧 update common workspace `backendUrlApi` to the new sub domain ([08a9e65](https://github.com/nitro-system/nitro/commit/08a9e650f5511f20a19f75e9fa278626171b1cbf))
+
 ## [1.4.6](https://github.com/nitro-system/nitro/compare/v1.4.5...v1.4.6) (2022-07-30)
 
 ### Bug Fixes
