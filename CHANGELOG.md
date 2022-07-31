@@ -1,3 +1,9 @@
+## [1.4.9](https://github.com/nitro-system/nitro/compare/v1.4.8...v1.4.9) (2022-07-31)
+
+### Bug Fixes
+
+- **frontend:** 💬 update paragraph text ([bcca068](https://github.com/nitro-system/nitro/commit/bcca0681dff1390e4089b72770b26cb7f6593092))
+
 ## [1.4.8](https://github.com/nitro-system/nitro/compare/v1.4.7...v1.4.8) (2022-07-31)
 
 ### Bug Fixes
