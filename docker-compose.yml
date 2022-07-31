@@ -28,31 +28,11 @@ services:
     networks:
       - nitro
 
-  # Generate SSL Certification
-  # certbot: # cspell:ignore certonly
-  #   image: certbot/certbot:latest
-  #   restart: unless-stopped
-  #   depends_on:
-  #     - b-api
-  #     - w-admin
-  #     - m-admin
-  #   volumes:
-  #     - ./certbot/conf/:/etc/letsencrypt/:rw
-  #     - ./certbot/www/:/var/www/certbot/:rw
-  #   # command: certonly --webroot -w /var/www/certbot --email challengeromar97@gmail.com --agree-tos -d www.web-admin.staging.nitro.ng-omar.com -d web-admin.staging.nitro.ng-omar.com -d mobile-admin.staging.nitro.ng-omar.com -d www.mobile-admin.staging.nitro.ng-omar.com -d api.staging.nitro.ng-omar.com -d www.api.staging.nitro.ng-omar.com
-  #   networks:
-  #     - nitro
-
   # Reverse Proxy
   reverse-proxy: # cspell:ignore certbot letsencrypt webroot
     container_name: nitrosystem-reverse_proxy_${APP_STAGE}
     image: nitrosystem/reverse_proxy:${APP_VERSION}-${APP_STAGE}
     restart: unless-stopped
-    # depends_on:
-    #   - certbot
-    # volumes:
-    #   - ./certbot/conf/:/etc/letsencrypt/:ro
-    #   - ./certbot/www/:/var/www/certbot/:ro
     ports:
       - 80:80
       - 443:443
