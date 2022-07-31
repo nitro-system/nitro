@@ -8,120 +8,121 @@ on:
     branches: [develop]
 
 jobs:
-  main:
-    name: Nx Cloud - Main Job
-    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
-    with:
-      number-of-agents: 3
-      parallel-commands: |
-        npx nx-cloud record -- npx nx workspace-lint
-        npx nx-cloud record -- npx nx format:check
-      parallel-commands-on-agents: |
-        npx nx affected --target=lint --parallel=3
-        npx nx affected --target=test --parallel=3 --ci --code-coverage
-        npx nx affected --target=build --parallel=3
+  # nx cloud ci
+  # main:
+  #   name: Nx Cloud - Main Job
+  #   uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
+  #   with:
+  #     number-of-agents: 3
+  #     parallel-commands: |
+  #       npx nx-cloud record -- npx nx workspace-lint
+  #       npx nx-cloud record -- npx nx format:check
+  #     parallel-commands-on-agents: |
+  #       npx nx affected --target=lint --parallel=3
+  #       npx nx affected --target=test --parallel=3 --ci --code-coverage
+  #       npx nx affected --target=build --parallel=3
 
-  agents:
-    name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
-    with:
-      number-of-agents: 3
+  # agents:
+  #   name: Nx Cloud - Agents
+  #   uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
+  #   with:
+  #     number-of-agents: 3
 
-  # test:
-  #   runs-on: ubuntu-latest
+  test-and-build:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
 
-  #     # Install Dependencies
-  #     - name: Install dependencies 🔧
-  #       run: |
-  #         npm i -g npm@latest
-  #         npm ci
+      # Install Dependencies
+      - name: Install dependencies 🔧
+        run: |
+          npm i -g npm@latest
+          npm ci
 
-  #     # Npm Run Test
-  #     - name: Run Test
-  #       run: npm run test
+      # Npm Run Test
+      - name: Run Test
+        run: npm run test
 
-  #     # Build application
-  #     - name: Run Build
-  #       run: npm run build
+      # Build application
+      - name: Run Build
+        run: npm run build
 
-  # cspell:
-  #   runs-on: ubuntu-latest
+  cspell:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
 
-  #     # Run Spell Check
-  #     - name: Run Spell Check 🔧
-  #       run: |
-  #         npx cspell --no-progress --show-suggestions --show-context
+      # Run Spell Check
+      - name: Run Spell Check 🔧
+        run: |
+          npx cspell --no-progress --show-suggestions --show-context
 
-  # format:
-  #   runs-on: ubuntu-latest
+  format:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
 
-  #     # Run Format Check
-  #     - name: Run Format Check 🔧
-  #       run: |
-  #         npx prettier . --check
+      # Run Format Check
+      - name: Run Format Check 🔧
+        run: |
+          npx prettier . --check
 
-  # style:
-  #   runs-on: ubuntu-latest
+  style:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     # Get checkout
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         fetch-depth: 0
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  #     # Install Node js
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.10.0'
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
 
-  #     # Install Dependencies
+      # Install Dependencies
 
-  #     - name: Install dependencies 🔧 # cspell:ignore postcss
-  #       run: |
-  #         npm i postcss stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-config-sass-guidelines stylelint-config-idiomatic-order -D
+      - name: Install dependencies 🔧 # cspell:ignore postcss
+        run: |
+          npm i postcss stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-config-sass-guidelines stylelint-config-idiomatic-order -D
 
-  #     # Run Style Check
-  #     - name: Run Style Check 🔧
-  #       run: |
-  #         npx stylelint "{apps,libs}/**/*.{css,less,sass,scss,sss}"
+      # Run Style Check
+      - name: Run Style Check 🔧
+        run: |
+          npx stylelint "{apps,libs}/**/*.{css,less,sass,scss,sss}"
