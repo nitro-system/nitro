@@ -23,6 +23,7 @@
     "vscode",
     "husky",
     "all",
-    "w-admin"
+    "w-admin",
+    "semantic-release"
   ]
 }
