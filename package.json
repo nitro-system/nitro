@@ -111,7 +111,6 @@
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "autoprefixer": "^10.4.8",
-    "cross-env": "^7.0.3",
     "cspell": "^6.5.0",
     "cypress": "^10.3.1",
     "eslint": "^8.20.0",
