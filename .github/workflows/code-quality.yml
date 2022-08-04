@@ -8,27 +8,7 @@ on:
     branches: [develop]
 
 jobs:
-  # nx cloud ci
-  # main:
-  #   name: Nx Cloud - Main Job
-  #   uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
-  #   with:
-  #     number-of-agents: 3
-  #     parallel-commands: |
-  #       npx nx-cloud record -- npx nx workspace-lint
-  #       npx nx-cloud record -- npx nx format:check
-  #     parallel-commands-on-agents: |
-  #       npx nx affected --target=lint --parallel=3
-  #       npx nx affected --target=test --parallel=3 --ci --code-coverage
-  #       npx nx affected --target=build --parallel=3
-
-  # agents:
-  #   name: Nx Cloud - Agents
-  #   uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
-  #   with:
-  #     number-of-agents: 3
-
-  test-and-build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -50,13 +30,38 @@ jobs:
           npm i -g npm@latest
           npm ci
 
-      # Npm Run Test
-      - name: Run Test
-        run: npm run test
+      # Run Unit Testing
+      - name: Run Unit Test
+        run: npm run check:test
+
+      # Run e2e Testing
+      - name: Run e2e Test
+        run: npm run check:e2e
 
       # Build application
       - name: Run Build
         run: npm run build
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+
+      # Run Linting
+      - name: Run Lint Check 🔧
+        run: |
+          npm run check:lint
 
   cspell:
     runs-on: ubuntu-latest
@@ -77,7 +82,7 @@ jobs:
       # Run Spell Check
       - name: Run Spell Check 🔧
         run: |
-          npx cspell --no-progress --show-suggestions --show-context
+          npm run check:cspell
 
   format:
     runs-on: ubuntu-latest
@@ -98,7 +103,7 @@ jobs:
       # Run Format Check
       - name: Run Format Check 🔧
         run: |
-          npx prettier . --check
+          npm run check:format
 
   style:
     runs-on: ubuntu-latest
@@ -117,7 +122,6 @@ jobs:
           node-version: '16.10.0'
 
       # Install Dependencies
-
       - name: Install dependencies 🔧 # cspell:ignore postcss
         run: |
           npm i postcss stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-config-sass-guidelines stylelint-config-idiomatic-order -D
@@ -125,4 +129,4 @@ jobs:
       # Run Style Check
       - name: Run Style Check 🔧
         run: |
-          npx stylelint "{apps,libs}/**/*.{css,less,sass,scss,sss}"
+          npm run check:style

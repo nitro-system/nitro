@@ -15,7 +15,7 @@
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md", "package.json", "package-lock.json"],
-        "message": "docs(release): ${nextRelease.version}"
+        "message": "docs(release): 🔖 ${nextRelease.version}"
       }
     ],
     "@semantic-release/github"

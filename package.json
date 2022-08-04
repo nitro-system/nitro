@@ -29,16 +29,18 @@
     "url": "https://ng-omar.com"
   },
   "scripts": {
-    "build": "nx run-many --target=build --all --parallel=false",
-    "check:e2e": "nx run-many --target=e2e --all --parallel=false",
-    "check:lint": "nx run-many --target=lint --all",
-    "check:test": "nx run-many --target=test --all",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "ng": "nx",
     "prepare": "husky install",
-    "start": "nx run-many --target=serve --all --parallel=false",
-    "test": "npm run check:test && npm run check:e2e && npm run check:lint",
-    "test:all": "npm run test && npm run build && npx cspell --no-progress --show-suggestions --show-context && npx prettier . --check && npx stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\""
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
+    "start": "npx nx run-many --target=serve --all --parallel=false",
+    "build": "npx nx run-many --target=build --all --parallel=false",
+    "check:e2e": "npx nx run-many --target=e2e --all --parallel=false",
+    "check:lint": "npx nx workspace-lint && npx nx run-many --target=lint --all",
+    "check:test": "npx nx run-many --target=test --all",
+    "check:cspell": "npx cspell --no-progress --show-suggestions --show-context",
+    "check:format": "npx nx format:check && npx prettier . --check",
+    "check:style": "npx stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"",
+    "check:all": "npm-run-all check:test check:e2e check:lint build check:cspell check:format check:style"
   },
   "dependencies": {
     "@angular/animations": "~14.1.0",
@@ -124,6 +126,7 @@
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
     "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
     "nx": "14.5.1",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
