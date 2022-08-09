@@ -8,7 +8,37 @@ on:
     branches: [develop]
 
 jobs:
-  test-and-lint:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+
+      # Install Dependencies
+      - name: Install dependencies
+        run: |
+          npm i -g npm@latest
+          npm ci
+
+      # Run Unit Testing
+      - name: Run Unit Test
+        run: npm run check:test
+
+      # Run e2e Testing
+      - name: Run e2e Test
+        run: npm run check:e2e
+
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,17 +61,9 @@ jobs:
           npm ci
 
       # Run Linting
-      - name: Run Lint Check
+      - name: Run Lint Check 🔧
         run: |
           npm run check:lint
-
-      # Run Unit Testing
-      - name: Run Unit Test
-        run: npm run check:test
-
-      # Run e2e Testing
-      - name: Run e2e Test
-        run: npm run check:e2e
 
       # Build application
       - name: Run Build
