@@ -1,3 +1,9 @@
+## [1.4.10](https://github.com/nitro-system/nitro/compare/v1.4.9...v1.4.10) (2022-08-09)
+
+### Bug Fixes
+
+- **core:** 🔒️ update all backend urls from http to https ([c82f7c7](https://github.com/nitro-system/nitro/commit/c82f7c761be84333a60ea43ed574be88afb0c603))
+
 ## [1.4.9](https://github.com/nitro-system/nitro/compare/v1.4.8...v1.4.9) (2022-07-31)
 
 ### Bug Fixes
