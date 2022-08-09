@@ -24,6 +24,7 @@
     "husky",
     "all",
     "w-admin",
-    "semantic-release"
+    "semantic-release",
+    "common-workspace"
   ]
 }

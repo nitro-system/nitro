@@ -3,7 +3,7 @@ import { BrowserTracing } from '@sentry/tracing';
 
 export const sentryInit = (env: {
   sentry: { dns: string };
-  backendApiUrl: string;
+  backendUrl: string;
   name: string;
   version: { full: string };
 }): void =>
@@ -11,7 +11,7 @@ export const sentryInit = (env: {
     dsn: env.sentry.dns,
     integrations: [
       new BrowserTracing({
-        tracingOrigins: ['localhost', env.backendApiUrl],
+        tracingOrigins: ['localhost', env.backendUrl],
         routingInstrumentation: Sentry.routingInstrumentation,
       }),
     ],

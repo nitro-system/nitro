@@ -9,7 +9,7 @@ export class FooterComponent {
   @Input() public env!: {
     name: string;
     production: boolean;
-    backendApiUrl: string;
+    backendUrl: string;
     version: { full: string };
   };
 }

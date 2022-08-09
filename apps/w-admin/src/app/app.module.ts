@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     FrontendFooterModule,
   ],
-  providers: [apiUrlInterceptorProvider(environment.backendApiUrl)],
+  providers: [apiUrlInterceptorProvider(environment.backendUrl)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

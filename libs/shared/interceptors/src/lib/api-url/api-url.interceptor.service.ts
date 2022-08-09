@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 
 export class ApiUrlInterceptor implements HttpInterceptor {
-  public constructor(public readonly backendApiUrl: string) {}
+  public constructor(public readonly backendUrl: string) {}
 
   public intercept(
     request: HttpRequest<unknown>,
@@ -19,7 +19,7 @@ export class ApiUrlInterceptor implements HttpInterceptor {
 
     if (request.url.startsWith('/api')) {
       requestCloned = request.clone({
-        url: `${this.backendApiUrl}${request.url}`,
+        url: `${this.backendUrl}${request.url}`,
       });
     }
 
@@ -28,9 +28,9 @@ export class ApiUrlInterceptor implements HttpInterceptor {
 }
 
 export const apiUrlInterceptorProvider = (
-  backendApiUrl = 'http://localhost:3000'
+  backendUrl = 'http://localhost:3000'
 ): Provider => ({
   provide: HTTP_INTERCEPTORS,
-  useClass: ApiUrlInterceptor.bind(this, backendApiUrl),
+  useClass: ApiUrlInterceptor.bind(this, backendUrl),
   multi: true,
 });

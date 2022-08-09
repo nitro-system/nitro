@@ -15,7 +15,7 @@ describe('FooterComponent', () => {
     component = fixture.componentInstance;
     component.env = {
       name: 'testing',
-      backendApiUrl: 'https://testing.com',
+      backendUrl: 'https://testing.com',
       production: false,
       version: { full: '0.0.0' },
     };

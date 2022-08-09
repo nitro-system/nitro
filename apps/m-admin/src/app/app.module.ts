@@ -24,7 +24,7 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    apiUrlInterceptorProvider(environment.backendApiUrl),
+    apiUrlInterceptorProvider(environment.backendUrl),
   ],
   bootstrap: [AppComponent],
 })
