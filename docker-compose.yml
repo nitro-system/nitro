@@ -39,8 +39,8 @@ services:
     networks:
       - nitro
     volumes:
-      - /etc/letsencrypt/live/staging.nitro.ng-omar.com/fullchain.pem:/fullchain.pem
-      - /etc/letsencrypt/live/staging.nitro.ng-omar.com/privkey.pem:/privkey.pem
+      - /etc/letsencrypt/live/${APP_STAGE}.nitro.ng-omar.com/fullchain.pem:/fullchain.pem
+      - /etc/letsencrypt/live/${APP_STAGE}.nitro.ng-omar.com/privkey.pem:/privkey.pem
 
 networks:
   nitro:

@@ -115,12 +115,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Install Dependencies
       - name: Install dependencies 🔧
-        run: |
-          npm i -g npm@latest
-          npm ci
+        run: npm ci
 
       # Build application
       - name: Run Build
@@ -250,7 +249,7 @@ jobs:
           host: ${{ secrets[env.DO_HOST] }}
           username: ${{ secrets[env.DO_USERNAME] }}
           key: ${{ secrets[env.DO_KEY] }}
-          source: 'run.sh,docker-compose.yml,setup-certbot.sh,generate-ssl.sh'
+          source: 'run.sh,docker-compose.yml,ssl.sh,digitalocean.ini'
           rm: true
           target: 'nitro'
 
@@ -264,4 +263,5 @@ jobs:
           timeout: '900000s'
           script: |
             cd ./nitro
+            ./ssl.sh ${{ env.env }}.nitro.ng-omar.com
             ./run.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}

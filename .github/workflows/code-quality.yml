@@ -23,12 +23,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Install Dependencies
       - name: Install dependencies
-        run: |
-          npm i -g npm@latest
-          npm ci
+        run: npm ci
 
       # Run Unit Testing
       - name: Run Unit Test
@@ -49,16 +48,40 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Install Dependencies
       - name: Install dependencies
-        run: |
-          npm i -g npm@latest
-          npm ci
+        run: npm ci
 
       # Run e2e Testing
       - name: Run e2e Test
         run: npm run check:e2e
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Install Node js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.10.0'
+          cache: 'npm'
+
+      # Install Dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Build application
+      - name: Run Build
+        run: npm run build
 
   lint:
     runs-on: ubuntu-latest
@@ -75,21 +98,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Install Dependencies
       - name: Install dependencies
-        run: |
-          npm i -g npm@latest
-          npm ci
+        run: npm ci
 
       # Run Linting
-      - name: Run Lint Check 🔧
+      - name: Run Lint Check
         run: |
           npm run check:lint
-
-      # Build application
-      - name: Run Build
-        run: npm run build
 
   cspell:
     runs-on: ubuntu-latest
@@ -106,6 +124,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Run Spell Check
       - name: Run Spell Check
@@ -127,6 +146,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Run Format Check
       - name: Run Format Check
@@ -148,6 +168,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.10.0'
+          cache: 'npm'
 
       # Install Dependencies
       - name: Install dependencies # cspell:ignore postcss
