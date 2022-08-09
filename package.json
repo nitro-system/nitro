@@ -38,7 +38,7 @@
     "check:lint": "npx nx workspace-lint && npx nx run-many --target=lint --all",
     "check:test": "npx nx run-many --target=test --all",
     "check:cspell": "npx cspell --no-progress --show-suggestions --show-context",
-    "check:format": "npx nx format:check && npx prettier . --check",
+    "check:format": "npx prettier . --check",
     "check:style": "npx stylelint \"{apps,libs}/**/*.{css,less,sass,scss,sss}\"",
     "check:all": "npm-run-all check:test check:e2e check:lint build check:cspell check:format check:style"
   },

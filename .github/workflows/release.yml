@@ -245,12 +245,12 @@ jobs:
 
       # Copy shell files to the server
       - name: Copy shell files to the server
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@master # cspell:ignore certbot
         with:
           host: ${{ secrets[env.DO_HOST] }}
           username: ${{ secrets[env.DO_USERNAME] }}
           key: ${{ secrets[env.DO_KEY] }}
-          source: 'deploy.sh,docker-compose.yml'
+          source: 'run.sh,docker-compose.yml,setup-certbot.sh,generate-ssl.sh'
           rm: true
           target: 'nitro'
 
@@ -264,4 +264,4 @@ jobs:
           timeout: '900000s'
           script: |
             cd ./nitro
-            ./deploy.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}
+            ./run.sh ${{ steps.package.outputs.current-version }} ${{ env.env }}
