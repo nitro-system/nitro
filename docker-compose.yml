@@ -29,7 +29,7 @@ services:
       - nitro
 
   # Reverse Proxy
-  reverse-proxy: # cspell:ignore certbot letsencrypt webroot
+  reverse-proxy: # cspell:ignore letsencrypt fullchain privkey
     container_name: nitrosystem-reverse_proxy_${APP_STAGE}
     image: nitrosystem/reverse_proxy:${APP_VERSION}-${APP_STAGE}
     restart: unless-stopped
@@ -38,6 +38,9 @@ services:
       - 443:443
     networks:
       - nitro
+    volumes:
+      - /etc/letsencrypt/live/staging.nitro.ng-omar.com/fullchain.pem:/fullchain.pem
+      - /etc/letsencrypt/live/staging.nitro.ng-omar.com/privkey.pem:/privkey.pem
 
 networks:
   nitro:
