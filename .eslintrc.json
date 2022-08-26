@@ -38,7 +38,9 @@
         "no-unused-vars": ["error"],
         "no-param-reassign": "off",
         "no-shadow": "off",
-        "no-return-await": "off"
+        "no-return-await": "off",
+        "no-underscore-dangle": "off",
+        "dot-notation": "off"
       }
     },
     {
