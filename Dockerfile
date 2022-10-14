@@ -9,7 +9,7 @@ COPY . .
 RUN npm i -g npm@latest
 RUN npm i
 RUN npx nx run-many --target=build --all --configuration=${stage} --parallel=false
-RUN export PROJECT=m-admin && npx ionic cap sync --prod --no-build
+RUN npm run cap:sync --project=m-admin
 
 # STAGE: Build Application
 FROM nginx:latest AS dist
