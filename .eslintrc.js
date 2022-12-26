@@ -20,25 +20,22 @@ module.exports = {
     },
     {
       files: ['*.ts', '*.tsx'],
-      extends: ['plugin:@nrwl/nx/typescript'],
-      rules: {},
-    },
-    {
-      files: ['*.js', '*.jsx'],
-      extends: ['plugin:@nrwl/nx/javascript'],
-      rules: {},
-    },
-    {
-      files: ['*.js'],
-      extends: ['@js-omar/eslint-config/.eslintrc.javascript.js'],
-    },
-    {
-      files: ['*.ts'],
-      extends: ['@js-omar/eslint-config/.eslintrc.typescript.js'],
+      extends: [
+        'plugin:@nrwl/nx/typescript',
+        '@js-omar/eslint-config/.eslintrc.typescript.js',
+      ],
       parserOptions: {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.*.json', './{apps,libs}/*/*/tsconfig.*.json'],
       },
+      rules: {},
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      extends: [
+        'plugin:@nrwl/nx/javascript',
+        '@js-omar/eslint-config/.eslintrc.javascript.js',
+      ],
     },
   ],
   ignorePatterns: ['node_modules', 'tmp', 'android', 'ios'],
