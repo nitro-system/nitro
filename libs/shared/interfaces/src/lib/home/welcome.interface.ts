@@ -1,3 +1,3 @@
-export interface IWelcome {
+export interface Welcome {
   message: string;
 }

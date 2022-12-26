@@ -21,17 +21,21 @@
  * - Delete and reinstall your node_modules
  */
 
-const fs = require('fs');
-const os = require('os');
-const cp = require('child_process');
+const fs = require('node:fs');
+const os = require('node:os');
+const cp = require('node:child_process');
+
 const isWindows = os.platform() === 'win32';
 let output;
 try {
+  // eslint-disable-next-line global-require
   output = require('@nrwl/workspace').output;
-} catch (e) {
+} catch {
+  // eslint-disable-next-line no-console
   console.warn(
     'Angular CLI could not be decorated to enable computation caching. Please ensure @nrwl/workspace is installed.'
   );
+  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(0);
 }
 
@@ -48,31 +52,34 @@ function symlinkNgCLItoNxCLI() {
        * This is the most reliable way to create symlink-like behavior on Windows.
        * Such that it works in all shells and works with npx.
        */
-      ['', '.cmd', '.ps1'].forEach((ext) => {
-        if (fs.existsSync(nxPath + ext))
-          fs.writeFileSync(ngPath + ext, fs.readFileSync(nxPath + ext));
-      });
+      // eslint-disable-next-line no-restricted-syntax
+      for (const extension of ['', '.cmd', '.ps1']) {
+        if (fs.existsSync(nxPath + extension))
+          fs.writeFileSync(
+            ngPath + extension,
+            fs.readFileSync(nxPath + extension)
+          );
+      }
     } else {
       // If unix-based, symlink
       cp.execSync(`ln -sf ./nx ${ngPath}`);
     }
-  } catch (e) {
+  } catch (error) {
     output.error({
-      title:
-        'Unable to create a symlink from the Angular CLI to the Nx CLI:' +
-        e.message,
+      title: `Unable to create a symlink from the Angular CLI to the Nx CLI:${error.message}`,
     });
-    throw e;
+    throw error;
   }
 }
 
 try {
   symlinkNgCLItoNxCLI();
+  // eslint-disable-next-line global-require
   require('nx/src/adapter/decorate-cli').decorateCli();
   output.log({
     title: 'Angular CLI has been decorated to enable computation caching.',
   });
-} catch (e) {
+} catch {
   output.error({
     title: 'Decoration of the Angular CLI did not complete successfully',
   });

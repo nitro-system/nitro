@@ -1,30 +1,30 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateServiceDto, UpdateServiceDto } from '@nitro/shared/dtos';
-import { IService } from '@nitro/shared/interfaces';
+import { Service } from '@nitro/shared/interfaces';
 import { randomUUID } from 'node:crypto';
 
 @Injectable()
 export class ServicesService {
-  private services: IService[] = [
+  private services: Service[] = [
     { id: '62c654e1-602c-466e-87c1-dc2b273c79a7', name: 'Fast' },
     { id: '32dd060b-8869-4346-961d-1877f94af14c', name: 'Rank' },
     { id: 'f8bd3ea3-f326-462f-883d-0672bfe44819', name: 'Money' },
     { id: 'cec9d908-e5eb-4b63-b82b-3b1910fb3265', name: 'Hero' },
   ];
 
-  public create(createServiceDto: CreateServiceDto): IService {
-    const service: IService = { id: randomUUID(), ...createServiceDto };
+  public create(createServiceDto: CreateServiceDto): Service {
+    const service: Service = { id: randomUUID(), ...createServiceDto };
 
     this.services.unshift(service);
 
     return service;
   }
 
-  public findAll(): IService[] {
+  public findAll(): Service[] {
     return this.services;
   }
 
-  public findOne(id: string): IService {
+  public findOne(id: string): Service {
     const service = this.services.find((s) => s.id === id);
 
     if (!service) {
@@ -34,31 +34,31 @@ export class ServicesService {
     return service;
   }
 
-  public update(id: string, updateServiceDto: UpdateServiceDto): IService {
-    const serviceIdx = this.services.findIndex((s) => s.id === id);
+  public update(id: string, updateServiceDto: UpdateServiceDto): Service {
+    const serviceIndex = this.services.findIndex((s) => s.id === id);
 
-    if (serviceIdx === -1) {
+    if (serviceIndex === -1) {
       throw new NotFoundException();
     }
 
-    const updatedService: IService = {
-      ...this.services[serviceIdx],
+    const updatedService: Service = {
+      ...this.services[serviceIndex],
       ...updateServiceDto,
-      id: this.services[serviceIdx].id,
+      id: this.services[serviceIndex].id,
     };
 
-    this.services[serviceIdx] = updatedService;
+    this.services[serviceIndex] = updatedService;
 
     return updatedService;
   }
 
   public remove(id: string): void {
-    const serviceIdx = this.services.findIndex((s) => s.id === id);
+    const serviceIndex = this.services.findIndex((s) => s.id === id);
 
-    if (serviceIdx === -1) {
+    if (serviceIndex === -1) {
       throw new NotFoundException();
     }
 
-    this.services.splice(serviceIdx, 1);
+    this.services.splice(serviceIndex, 1);
   }
 }

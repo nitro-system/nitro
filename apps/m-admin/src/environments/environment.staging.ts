@@ -1,8 +1,8 @@
 import { AppEnvironmentEnum } from '@nitro/shared/enums';
-import { commonEnv } from './environment.common';
+import { commonEnvironment } from './environment.common';
 
 export const environment = {
-  ...commonEnv,
+  ...commonEnvironment,
   production: true,
-  name: AppEnvironmentEnum.STAGING,
+  name: AppEnvironmentEnum.staging,
 } as const;

@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'frontend-sentry',
   preset: '../../../jest.preset.js',

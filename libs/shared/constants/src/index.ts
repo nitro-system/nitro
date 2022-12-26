@@ -1,1 +1,1 @@
-export * from './lib/common-workspace-env/common-workspace-env';
+export * from './lib/common-workspace-environment/common-workspace-environment';

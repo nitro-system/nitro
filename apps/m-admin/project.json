@@ -42,11 +42,11 @@
           "fileReplacements": [
             {
               "replace": "apps/m-admin/src/environments/environment.ts",
-              "with": "apps/m-admin/src/environments/environment.prod.ts"
+              "with": "apps/m-admin/src/environments/environment.production.ts"
             },
             {
-              "replace": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.ts",
-              "with": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.prod.ts"
+              "replace": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.ts",
+              "with": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.production.ts"
             }
           ],
           "outputHashing": "all"
@@ -70,8 +70,8 @@
               "with": "apps/m-admin/src/environments/environment.staging.ts"
             },
             {
-              "replace": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.ts",
-              "with": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.staging.ts"
+              "replace": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.ts",
+              "with": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.staging.ts"
             }
           ],
           "outputHashing": "all"

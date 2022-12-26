@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateServiceDto } from '@nitro/shared/dtos';
-import { IService } from '@nitro/shared/interfaces';
+import { Service } from '@nitro/shared/interfaces';
 import { trackById } from '@nitro/shared/utils';
 import { BehaviorSubject, finalize } from 'rxjs';
 import {
@@ -26,7 +26,7 @@ import { ServicesService } from './services.service';
 export class ServicesComponent {
   public readonly trackById = trackById;
 
-  public services$ = new BehaviorSubject<IService[]>([]);
+  public services$ = new BehaviorSubject<Service[]>([]);
 
   public isLoadingServices$ = new BehaviorSubject<boolean>(false);
 
@@ -40,11 +40,11 @@ export class ServicesComponent {
   ) {
     this.createForm = fb.group({
       name: [
-        null,
+        undefined,
         [
           Validators.required.bind(this),
           Validators.minLength(3),
-          Validators.maxLength(10000),
+          Validators.maxLength(10_000),
         ],
       ],
     });

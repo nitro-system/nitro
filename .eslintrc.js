@@ -1,15 +1,10 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['**/*'],
   plugins: ['@nrwl/nx'],
+  extends: ['@js-omar/eslint-config/.eslintrc.base.js'],
   overrides: [
     {
-      files: ['*.*'],
-      extends: ['@js-omar/eslint-config/.eslintrc.base.js'],
-    },
-    {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
-      extends: ['@js-omar/eslint-config/.eslintrc.javascript.js'],
       rules: {
         '@nrwl/nx/enforce-module-boundaries': [
           'error',
@@ -25,15 +20,7 @@ module.exports = {
     },
     {
       files: ['*.ts', '*.tsx'],
-      extends: [
-        'plugin:@nrwl/nx/typescript',
-        '@js-omar/eslint-config/.eslintrc.typescript.js',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.*.json', './{apps,libs}/*/*/tsconfig.*.json'],
-      },
+      extends: ['plugin:@nrwl/nx/typescript'],
       rules: {},
     },
     {
@@ -42,13 +29,17 @@ module.exports = {
       rules: {},
     },
     {
-      files: ['*.{component,modal,page}.ts'],
-      extends: ['@js-omar/eslint-config/.eslintrc.angular.js'],
+      files: ['*.js'],
+      extends: ['@js-omar/eslint-config/.eslintrc.javascript.js'],
     },
     {
-      files: ['*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx'],
-      env: { jest: true },
-      rules: { '@typescript-eslint/no-unsafe-call': 'off' },
+      files: ['*.ts'],
+      extends: ['@js-omar/eslint-config/.eslintrc.typescript.js'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.*.json', './{apps,libs}/*/*/tsconfig.*.json'],
+      },
     },
   ],
+  ignorePatterns: ['node_modules', 'tmp', 'android', 'ios'],
 };

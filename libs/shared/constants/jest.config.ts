@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'shared-constants',
   preset: '../../../jest.preset.js',

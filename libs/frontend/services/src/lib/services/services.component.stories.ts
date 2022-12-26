@@ -25,8 +25,8 @@ export default {
   ],
 } as Meta<ServicesComponent>;
 
-const Template: Story<ServicesComponent> = (args: ServicesComponent) => ({
-  props: args,
+const Template: Story<ServicesComponent> = (arguments_: ServicesComponent) => ({
+  props: arguments_,
 });
 
 export const Primary = Template.bind({});

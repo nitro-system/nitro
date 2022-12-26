@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CreateServiceDto, UpdateServiceDto } from '@nitro/shared/dtos';
-import { IService } from '@nitro/shared/interfaces';
+import { Service } from '@nitro/shared/interfaces';
 import { ServicesService } from './services.service';
 
 @Controller({ path: 'services', version: '1' })
@@ -16,17 +16,17 @@ export class ServicesController {
   public constructor(private readonly servicesService: ServicesService) {}
 
   @Post()
-  public create(@Body() createServiceDto: CreateServiceDto): IService {
+  public create(@Body() createServiceDto: CreateServiceDto): Service {
     return this.servicesService.create(createServiceDto);
   }
 
   @Get()
-  public findAll(): IService[] {
+  public findAll(): Service[] {
     return this.servicesService.findAll();
   }
 
   @Get(':id')
-  public findOne(@Param('id') id: string): IService {
+  public findOne(@Param('id') id: string): Service {
     return this.servicesService.findOne(id);
   }
 
@@ -34,7 +34,7 @@ export class ServicesController {
   public update(
     @Param('id') id: string,
     @Body() updateServiceDto: UpdateServiceDto
-  ): IService {
+  ): Service {
     return this.servicesService.update(id, updateServiceDto);
   }
 

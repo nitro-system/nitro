@@ -1,2 +1,2 @@
 export * from './welcome.interface';
-export * from './env.interface';
+export * from './environment.interface';

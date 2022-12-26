@@ -11,5 +11,5 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  // eslint-disable-next-line no-console
-  .catch((err) => console.error(err));
+  // eslint-disable-next-line no-console,unicorn/prefer-top-level-await
+  .catch((error) => console.error(error));

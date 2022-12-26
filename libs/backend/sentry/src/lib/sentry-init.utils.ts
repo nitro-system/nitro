@@ -1,13 +1,13 @@
 import * as Sentry from '@sentry/node';
 
-export const sentryInit = (env: {
+export const sentryInit = (environment: {
   sentry: { dns: string };
   name: string;
   version: { full: string };
 }): void =>
   Sentry.init({
-    dsn: env.sentry.dns,
-    environment: env.name,
-    release: env.version.full,
-    tracesSampleRate: 1.0,
+    dsn: environment.sentry.dns,
+    environment: environment.name,
+    release: environment.version.full,
+    tracesSampleRate: 1,
   });

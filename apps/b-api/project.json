@@ -20,11 +20,11 @@
           "fileReplacements": [
             {
               "replace": "apps/b-api/src/environments/environment.ts",
-              "with": "apps/b-api/src/environments/environment.prod.ts"
+              "with": "apps/b-api/src/environments/environment.production.ts"
             },
             {
-              "replace": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.ts",
-              "with": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.prod.ts"
+              "replace": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.ts",
+              "with": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.production.ts"
             }
           ],
           "generatePackageJson": true
@@ -39,8 +39,8 @@
               "with": "apps/b-api/src/environments/environment.staging.ts"
             },
             {
-              "replace": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.ts",
-              "with": "libs/shared/constants/src/lib/common-workspace-env/common-workspace-env.staging.ts"
+              "replace": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.ts",
+              "with": "libs/shared/constants/src/lib/common-workspace-environment/common-workspace-environment.staging.ts"
             }
           ],
           "generatePackageJson": true

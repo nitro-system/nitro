@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'frontend-footer',
   preset: '../../../jest.preset.js',

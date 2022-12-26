@@ -10,7 +10,8 @@ export const sentryProviders: Provider[] = [
   { provide: Sentry.TraceService, deps: [Router] },
   {
     provide: APP_INITIALIZER,
-    useFactory: () => () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    // eslint-disable-next-line unicorn/consistent-function-scoping, @typescript-eslint/no-empty-function
+    useFactory: () => () => {},
     deps: [Sentry.TraceService],
     multi: true,
   },

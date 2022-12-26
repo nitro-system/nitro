@@ -1,5 +1,5 @@
 export const enum AppEnvironmentEnum {
-  PRODUCTION = 'production',
-  DEVELOPMENT = 'development',
-  STAGING = 'staging',
+  production = 'production',
+  development = 'development',
+  staging = 'staging',
 }

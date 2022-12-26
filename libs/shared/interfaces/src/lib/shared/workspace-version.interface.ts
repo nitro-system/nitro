@@ -1,4 +1,4 @@
-export interface IWorkspaceVersion {
+export interface WorkspaceVersion {
   full: string;
   major: number;
   minor: number;

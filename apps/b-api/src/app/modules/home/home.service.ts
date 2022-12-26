@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { IAppEnvironment, IWelcome } from '@nitro/shared/interfaces';
-import { environment } from '../../../../src/environments/environment';
+import { AppEnvironment, Welcome } from '@nitro/shared/interfaces';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class HomeService {
   private welcomeMessage = 'Welcome To Our';
 
-  public env(): IAppEnvironment {
+  public env(): AppEnvironment {
     return {
       environment: environment.name,
       production: environment.production,
@@ -14,7 +14,7 @@ export class HomeService {
     };
   }
 
-  public getWelcomeMessage(project: string): IWelcome {
+  public getWelcomeMessage(project: string): Welcome {
     const titleCaseProject = project
       .replace('-', ' ')
       .split(' ')

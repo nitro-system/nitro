@@ -24,5 +24,5 @@ async function bootstrap(): Promise<void> {
   Logger.log(`Port: ${environment.port}`);
 }
 
-// eslint-disable-next-line no-console
-bootstrap().catch((err) => console.log(err));
+// eslint-disable-next-line no-console, unicorn/prefer-top-level-await
+bootstrap().catch((error) => console.log(error));

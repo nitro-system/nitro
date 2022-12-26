@@ -23,8 +23,8 @@ export default {
   ],
 } as Meta<HomeComponent>;
 
-const Template: Story<HomeComponent> = (args: HomeComponent) => ({
-  props: args,
+const Template: Story<HomeComponent> = (arguments_: HomeComponent) => ({
+  props: arguments_,
 });
 
 export const Primary = Template.bind({});

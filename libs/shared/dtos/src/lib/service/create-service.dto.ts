@@ -1,3 +1,3 @@
-import { IService } from '@nitro/shared/interfaces';
+import { Service } from '@nitro/shared/interfaces';
 
-export interface CreateServiceDto extends Pick<IService, 'name'> {}
+export interface CreateServiceDto extends Pick<Service, 'name'> {}

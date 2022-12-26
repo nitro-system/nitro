@@ -1,21 +1,21 @@
 import * as Sentry from '@sentry/angular';
 import { BrowserTracing } from '@sentry/tracing';
 
-export const sentryInit = (env: {
+export const sentryInit = (environment: {
   sentry: { dns: string };
   backendUrl: string;
   name: string;
   version: { full: string };
 }): void =>
   Sentry.init({
-    dsn: env.sentry.dns,
+    dsn: environment.sentry.dns,
     integrations: [
       new BrowserTracing({
-        tracingOrigins: ['localhost', env.backendUrl],
+        tracingOrigins: ['localhost', environment.backendUrl],
         routingInstrumentation: Sentry.routingInstrumentation,
       }),
     ],
-    environment: env.name,
-    release: env.version.full,
-    tracesSampleRate: 1.0,
+    environment: environment.name,
+    release: environment.version.full,
+    tracesSampleRate: 1,
   });

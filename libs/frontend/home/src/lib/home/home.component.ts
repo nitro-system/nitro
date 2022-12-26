@@ -20,8 +20,8 @@ import { HomeService } from './home.service';
 export class HomeComponent {
   @Input()
   public set project(project: string) {
-    this.homeService.getWelcomeMessage(project).subscribe((msg) => {
-      this.welcomeMessage$.next(msg);
+    this.homeService.getWelcomeMessage(project).subscribe((message) => {
+      this.welcomeMessage$.next(message);
     });
   }
 

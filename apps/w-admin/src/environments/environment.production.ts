@@ -3,6 +3,6 @@ import { commonEnvironment } from './environment.common';
 
 export const environment = {
   ...commonEnvironment,
-  production: false,
-  name: AppEnvironmentEnum.development,
+  production: true,
+  name: AppEnvironmentEnum.production,
 } as const;
