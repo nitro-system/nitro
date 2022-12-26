@@ -42,7 +42,7 @@ export class ServicesComponent {
       name: [
         null,
         [
-          Validators.required,
+          Validators.required.bind(this),
           Validators.minLength(3),
           Validators.maxLength(10000),
         ],
@@ -66,9 +66,9 @@ export class ServicesComponent {
     if (this.createForm.invalid) return;
     this.createForm.disable();
 
-    const createServiceDto: CreateServiceDto = {
-      name: this.createForm.value.name,
-    };
+    const { name } = this.createForm.value as { name: string };
+
+    const createServiceDto: CreateServiceDto = { name };
 
     this.servicesService
       .create(createServiceDto)

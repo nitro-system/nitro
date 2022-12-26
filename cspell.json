@@ -21,7 +21,8 @@
     "storysource",
     "stylelint",
     "tailwindcss",
-    "titlecase"
+    "titlecase",
+    "Buildable"
   ],
   "language": "en,ar",
   "ignoreRegExpList": ["/[ء-ي]+/"],

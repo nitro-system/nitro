@@ -1,13 +1,10 @@
 {
-  "extends": ["../../../.eslintrc.json"],
+  "extends": ["../../../.eslintrc.js"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "no-shadow": "off",
-        "@typescript-eslint/no-shadow": ["error"]
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],
