@@ -4,8 +4,12 @@
   "plugins": ["@nrwl/nx"],
   "overrides": [
     {
+      "files": ["*.*"],
+      "extends": ["@js-omar/eslint-config/.eslintrc.base.js"]
+    },
+    {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["@js-omar/eslint-config/.eslintrc.base.js"],
+      "extends": ["@js-omar/eslint-config/.eslintrc.javascript.js"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
