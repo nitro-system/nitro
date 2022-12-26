@@ -28,7 +28,6 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.*.json', './{apps,libs}/*/*/tsconfig.*.json'],
       },
-      rules: {},
     },
     {
       files: ['*.js', '*.jsx'],
