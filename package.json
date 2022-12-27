@@ -91,7 +91,7 @@
     "@capacitor/cli": "4.0.1",
     "@ionic/angular-toolkit": "^7.0.0",
     "@js-omar/eslint-config": "^1.16.0",
-    "@js-omar/prettier-config": "^1.0.3",
+    "@js-omar/prettier-config": "^1.0.5",
     "@js-omar/stylelint-config": "^1.0.2",
     "@nestjs/schematics": "9.0.1",
     "@nestjs/testing": "9.0.7",
