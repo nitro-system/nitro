@@ -45,6 +45,7 @@
     "android",
     "ios",
     ".scannerwork",
-    "nginx*.conf"
+    "nginx*.conf",
+    ".idea"
   ]
 }
